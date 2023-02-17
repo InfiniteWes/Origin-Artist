@@ -16,13 +16,39 @@
   </head>
   <body>
     
-  <ul>
+  <ul id="navbar">
     <li><a href="#Home.asp">Home</a></li>
     <li><a href="#Magic.asp">Magic</a></li>
     <li><a href="#Equipment.asp">Equipment</a></li>
     <li><a href="#Manage.asp">Manage</a></li>
     <li><a href="Charater Sheet">Character Sheet</a></li>
   </ul>
+
+  <button id="toggle-sidebar">Toggle Sidebar</button>
+    <div id="sidebar">
+      <p>This is some information in the sidebar.</p>
+      <button id="close-sidebar">Close Sidebar</button>
+    </div>
+    <script>
+      const toggleButton = document.getElementById('toggle-sidebar');
+      const closeButton = document.getElementById('close-sidebar');
+      const sidebar = document.getElementById('sidebar');
+      toggleButton.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+      });
+      closeButton.addEventListener('click', () => {
+        sidebar.classList.remove('show');
+      });
+      document.addEventListener('click', (event) => {
+        if (event.target !== toggleButton && !sidebar.contains(event.target)) {
+          sidebar.classList.remove('show');
+        }
+      });
+
+      const navbarHeight = document.getElementById('navbar').offsetHeight;
+      document.body.style.marginTop = `${navbarHeight}px`;
+    </script>
+
     <p>Welcome to your Electron application.</p>
   </body>
 </html>
