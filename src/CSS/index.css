@@ -58,7 +58,7 @@ body {
   border-style: hidden;
   margin-top: 20px;
   margin-bottom: 0px;
-  background-image: url("NewCharacter.jpg");
+  background-image: url("../assets/NewCharacter.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   list-style: none; /*Remove bullet points*/
