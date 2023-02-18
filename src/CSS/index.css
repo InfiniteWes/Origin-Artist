@@ -105,7 +105,7 @@ body > .titlebar {
 }
 
 #Create-Character {
-
+  position: absolute;
 }
 
 #gallery {
