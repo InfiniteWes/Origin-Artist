@@ -1,8 +1,9 @@
 body {
   margin: 0;
 }
+
 #navbar {
-  list-style-type: none;
+  list-style: none; /* Remove bullet points */
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -12,10 +13,12 @@ body {
   top: 0;
   width: 100%;
 }
+
 #navbar li {
   float: left;
   width: 20%;
 }
+
 #navbar li a {
   display: block;
   color: white;
@@ -24,9 +27,11 @@ body {
   text-decoration: none;
   width: 100%;
 }
+
 #navbar li a:hover {
   color: #99AAB5;
 }
+
 #sidebar {
   position: fixed;
   bottom: -9px;
@@ -36,7 +41,36 @@ body {
   background-color: #23272A;
   z-index: 1;
   transition: all 0.5s ease-in-out;
+  margin-bottom: 0;
 }
+
 #sidebar.show {
   right: 0;
+}
+
+#toggle-sidebar {
+  position: fixed;
+  top: 100px;
+  left: 50px;
+  width: 400px;
+  height: 200px;
+  border-radius: 12px;
+  border-style: hidden;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  background-image: url("NewCharacter.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  list-style: none; /*Remove bullet points*/
+  font-family: Trajan Pro; /* Change the font family */
+  font-size: 24px; /* Change the font size */
+  color: #ffffff; /* Change the font color */
+}
+
+#toggle-sidebar:hover {
+  transform: scale(1.05);
+}
+
+#toggle-sidebar {
+  transition: all 0.3s ease-in-out;
 }
