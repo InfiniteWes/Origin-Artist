@@ -6,6 +6,16 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+const { Menu } = require('electron')
+
+const template = [
+   
+]
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
+
+
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -13,6 +23,7 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      
     },
   });
 
@@ -22,6 +33,7 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
