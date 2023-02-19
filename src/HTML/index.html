@@ -12,53 +12,128 @@
         color: black;
         font-family: Arial, sans-serif;
       }
-      /* add your own styles here */
+      /* Add your own styles here */
+
+      /* Styles for the dropdown menus */
+      #Gender {
+        position: relative;
+        display: inline-block;
+      }
+
+      #Gender-Menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+      }
+
+      #Gender-Menu a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
     </style>
   </head>
-  <body>
+    <body>
     
-  <ul id="navbar">
-    <li><a href="#Home.asp">Home</a></li>
-    <li><a href="#Magic.asp">Magic</a></li>
-    <li><a href="#Equipment.asp">Equipment</a></li>
-    <li><a href="#Manage.asp">Manage</a></li>
-    <li><a href="Charater Sheet">Character Sheet</a></li>
-  </ul>
+      <ul id="navbar">
+      <li><a href="#Home.asp">Home</a></li>
+      <li><a href="#Magic.asp">Magic</a></li>
+      <li><a href="#Equipment.asp">Equipment</a></li>
+      <li><a href="#Manage.asp">Manage</a></li>
+      <li><a href="Charater Sheet">Character Sheet</a></li>
+    </ul>
 
-  <button id="toggle-sidebar">New Character</button>
-    <div id="sidebar">
-      <p>This is some information in the sidebar.</p>
-      <button id="close-sidebar">Close Sidebar</button>
-      <button id="Create-Character">Create Character</button>
-      <div id="gallery">
-        <a href="#"><img src="../assests/profileart1"></a>
-        <a href="#"><img src="../assests/profileart2"></a>
-        <a href="#"><img src="../assests/profileart3"></a>
-        <a href="#"><img src="../assests/profileart4"></a>
-        <a href="#"><img src="../assests/profileart5"></a>
-        <a href="#"><img src="../assests/profileart6"></a>
-        <a href="#"><img src="../assests/profileart7"></a>
-    </div>
-    <script>
-      const toggleButton = document.getElementById('toggle-sidebar');
-      const closeButton = document.getElementById('close-sidebar');
-      const sidebar = document.getElementById('sidebar');
-      toggleButton.addEventListener('click', () => {
-        sidebar.classList.toggle('show');
-      });
-      closeButton.addEventListener('click', () => {
-        sidebar.classList.remove('show');
-      });
-      document.addEventListener('click', (event) => {
-        if (event.target !== toggleButton && !sidebar.contains(event.target)) {
+    <button id="toggle-sidebar">New Character</button>
+      
+      <div id="sidebar">
+        <p>This is some information in the sidebar.</p>
+        <button id="close-sidebar">Close Sidebar</button>
+
+        <button id="Create-Character">Create Character</button>
+
+        <button id="Name">Name</button>
+
+        <button id="Gender">
+          Gender ▼
+          <ul id="Gender-Menu" class="submenu" type="toggleButton">
+            <li><a href="#">Male</a></li>
+            <li><a href="#">Female</a></li>
+          </ul>
+        </button>
+      
+        <button id="StatsGen" class="submenu" type="button">
+          Stats Generation Option ▼
+          <ul id="Stats-Menu">
+            <li><a href="#">Manual/Dice</a></li>
+            <li><a href="#">Standard Array (15, 14, 13, 12, 10, 8)</a></li>
+            <li><a href="#">Point Buy</a></li>
+          </ul>
+        </button>
+
+        <div id="gallery">
+          <a href="#"><img src="../assets/profileart1.jpg"></a>
+          <a href="#"><img src="../assets/profileart2.jpg"></a>
+          <a href="#"><img src="../assets/profileart3.jpg"></a>
+          <a href="#"><img src="../assets/profileart4.jpg"></a>
+         <a href="#"><img src="../assets/profileart5.jpg"></a>
+          <a href="#"><img src="../assets/profileart6.png"></a>
+          <a href="#"><img src="../assets/profileart7.jpg"></a>
+        </div>
+      </div>
+
+      <div id="main-content" style="background-color: transparent;">
+        <p>Welcome to your electron application</p>
+      </div>
+
+      <script>
+        const toggleButton = document.getElementById('toggle-sidebar');
+        const closeButton = document.getElementById('close-sidebar');
+        const sidebar = document.getElementById('sidebar');
+        toggleButton.addEventListener('click', () => {
+          sidebar.classList.toggle('show');
+        });
+        closeButton.addEventListener('click', () => {
           sidebar.classList.remove('show');
-        }
-      });
-
-      const navbarHeight = document.getElementById('navbar').offsetHeight;
-      document.body.style.marginTop = `${navbarHeight}px`;
-    </script>
-
-    <p>Welcome to your Electron application.</p>
-  </body>
+        });
+        document.addEventListener('click', (event) => {
+          if (event.target !== toggleButton && !sidebar.contains(event.target)) {
+            sidebar.classList.remove('show');
+          }
+        });
+    
+        const navbarHeight = document.getElementById('navbar').offsetHeight;
+        document.body.style.marginTop = `${navbarHeight}px`;
+    
+        const Genderbutton = document.getElementById('Gender');
+        const GenderMenu = document.querySelector('#Gender-Menu');
+    
+        Genderbutton.addEventListener('click', (event) => {
+          event.preventDefault();
+          GenderMenu.classList.toggle('show');
+        });
+    
+        document.addEventListener('click', (event) => {
+          if (event.target !== Genderbutton && !GenderMenu.contains(event.target)) {
+            GenderMenu.classList.remove('show');
+          }
+        });
+    
+        const StatsGen = document.getElementById('StatsGen');
+        const StatsMenu = document.querySelector('#Stats-Menu');
+    
+        StatsGen.addEventListener('click', (event) => {
+          event.preventDefault();
+          StatsMenu.classList.toggle('show');
+        });
+    
+        document.addEventListener('click', (event) => {
+          if (event.target !== StatsGen && !StatsMenu.contains(event.target)) {
+            StatsMenu.classList.remove('show');
+          }
+        });
+      </script>
+    </body>
 </html>
+   

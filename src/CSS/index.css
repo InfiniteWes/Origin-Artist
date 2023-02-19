@@ -7,10 +7,16 @@ body {
   background-color: #111111;
 }
 
-p {
+#main-content {
   background-color: #111111;
 }
 
+#main-content p {
+  background-color: #111111;
+}
+#p {
+  background-color: #111111;
+}
 /* Hide the menu bar */
 body > .titlebar {
   display: none;
@@ -123,7 +129,9 @@ body > .titlebar {
 }
 
 #gallery img {
-  width: 100%;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 10px;
 }
 
