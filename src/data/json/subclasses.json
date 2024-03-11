@@ -1,0 +1,425 @@
+{
+    "Barbarian": {
+      "subclasses": {
+        "Path of the Berserker": {
+          "description": "Embraces their inner fury and channels it to become a whirlwind of destruction."
+        },
+        "Path of the Totem Warrior": {
+          "description": "Forms a bond with a totem animal and gains its power and protection."
+        },
+        "Path of the Battlerager": {
+          "description": "Harnesses the chaotic magic of the Feywild, transforming their rage into wild surges of unpredictable power."
+        },
+        "Path of the Beast": {
+          "description": "Tamed by a beast, they become even more ferocious and ferocious."
+        },
+        "Path of the Ancestral Guardian": {
+          "description": "Tamed by an animal, they become even more ferocious and ferocious."
+        },
+        "Path of the Giant": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Path of the Storm Herald": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        },
+        "Path of Wild Magic": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Path of the Zealot": {
+          "description": "Tamed by a demon, they become even more ferocious and ferocious."
+        }
+    },
+    "Bard": {
+      "subclasses": {
+        "College of Lore": {
+          "description": "Masters the arts of knowledge and performance, gaining the ability to weave magic into their music and words."
+        },
+        "College of Valor": {
+          "description": "Combines martial prowess with inspiring magic, becoming a charismatic leader on and off the battlefield."
+        },
+        "College of Glamour": {
+          "description": "Captivates audiences with enchanting performances, beguiling and captivating all who hear their music."
+        },
+        "College of Spirits": {
+          "description": "Tamed by a beast, they become even more ferocious and ferocious."
+        },
+        "College of Swords": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "College of Whispers": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "College of Creation": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        },
+        "College of Eloquence": {
+          "description": "Tamed by a demon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Cleric": {
+      "subclasses": {
+        "Knowledge Domain": {
+          "description": "Delves into the secrets of the multiverse, gaining knowledge and uncovering hidden truths."
+        },
+        "Life Domain": {
+          "description": "Channels divine energy to heal and protect, becoming a beacon of hope and vitality."
+        },
+        "Light Domain": {
+          "description": "Channels the power of light, warding off darkness and blazing with radiant energy."
+        },
+        "Nature Domain": {
+          "description": "Unveils the true beauty of the natural world, harnessing the gifts of the forest and the animals."
+        },
+        "Order Domain": {
+          "description": "Tamed by a beast, they become even more ferocious and ferocious."
+        },
+        "Peace Domain": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Tempest Domain": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Trickery Domain": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        },
+        "War Domain": {
+          "description": "Tamed by a demon, they become even more ferocious and ferocious."
+        },
+        "Death Domain": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Forge Domain": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        },
+        "Grave Domain": {
+          "description": "Tamed by a demon, they become even more ferocious and ferocious."
+        },
+        "Arcana Domain": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Twilight Domain": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Druid": {
+      "subclasses": {
+        "Circle of the Land": {
+          "description": "Forms a deep bond with the natural world, gaining the power to command the elements and commune with spirits of the land."
+        },
+        "Circle of the Moon": {
+          "description": "Shapeshifts into powerful animal forms, harnessing the primal magic of the wild and the moon."
+        },
+        "Circle of Dreams": {
+          "description": "Draws upon the magic of the Feywild, gaining the ability to soothe and heal with their connection to dreams and nature."
+        },
+        "Circle of the Stars": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Circle of the Shepherd": {
+          "description": "Tamed by a beast, they become even more ferocious and ferocious."
+        },
+        "Circle of the Spors": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Circle of Wildfire": {
+          "description": "Tamed by a storm, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Fighter": {
+      "subclasses": {
+        "Arcane Archer": {
+          "description": "Embraces their inner fury and channels it to become a whirlwind of destruction."
+        },
+        "Banneret": {
+          "description": "Tamed by a beast, they become even more ferocious and ferocious."
+        },
+        "Battle Master": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Cavalier": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Champion": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Echo Knight": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Eldritch Knight": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Psi Warrior": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Rune Knight": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        },
+        "Samurai": {
+          "description": "Tamed by a giant, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Monk": {
+      "subclasses": {
+        "Way of the Four Elements": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Kensei": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Sun Soul": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Shadow": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of Mercy": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Open Hand": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Drunken Master": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Ascendant Dragon": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Astral Self": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Way of the Long Death": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Paladin": {
+      "subclasses": {
+        "Oath of Vengeance": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of Conquest": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of Redemption": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of Glory": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of the Watchers": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of the Ancients": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of the Crown": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oathbreaker": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Oath of Devotion": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Ranger": {
+      "subclasses": {
+        "Beast Master Conclave": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Drakewarden": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Fey Wanderer": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Gloom Stalker Conclave": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Horizon Walker Conclave": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Hunter Conclave": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Monster Slayer Conclave": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Swarmkeeper": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Rogue": {
+      "subclasses": {
+        "Arcane Trickster": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Assassin": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Inquisitive": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Mastermind": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Swashbuckler": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Thief": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Phantom": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Soulknife": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Scout": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Sorcerer": {
+      "subclasses": {
+        "Draconic Bloodline": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Wild Magic": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Storm Sorcery": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Shadow Magic": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Aberrant Mind": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Clockwork Soul": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Divine Soul": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Lunar Sorcery": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Warlock": {
+      "subclasses": {
+          "Archfey": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Celestial": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Fathomless": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Fiend": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "The Genie": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Great Old One": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Hexblade": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Undying": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          },
+          "Undead": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+          }
+        }
+    },
+    "Wizard": {
+      "subclasses": {
+        "School of Abjuration": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Conjuration": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Divination": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Enchantment": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Evocation": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Illusion": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Necromancy": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Transmutation": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of War Magic": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Order of Scribes": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Bladesinging": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Chronurgy": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "School of Graviturgy": {
+          "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Artificer": {
+      "subclasses": {
+        "Alchemist": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Armorer": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Artillerist": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Battle Smith": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    },
+    "Blood Hunter": {
+      "subclasses": {
+        "Order of the Ghostslayer": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Order of the Lycan": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Order of the Mutant": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        },
+        "Order of the Profane Soul": {
+            "description": "Tamed by a dragon, they become even more ferocious and ferocious."
+        }
+      }
+    }
+
+   }
+}
