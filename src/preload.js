@@ -3,6 +3,6 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    setTitle: (title) => ipcRenderer.send('set-title', title) //the context bridge exposes the ipcRenderer to the main process
+    setTitle: (title) => ipcRenderer.send('Origin-Artist', title) //the context bridge exposes the ipcRenderer to the main process
 
 })
