@@ -22,35 +22,22 @@ body > .titlebar {
   display: none;
 }
 
-#navbar {
-  list-style: none; /* Remove bullet points */
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #212121;
-  z-index: 2;
-  position: fixed;
-  top: 0;
+nav {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent; /* Set the background color of the navigation bar to transparent */
 }
 
-#navbar li {
-  float: left;
-  width: 20%;
-}
-
-#navbar li a {
-  display: block;
-  color: #999999;
-  text-align: center;
-  font-family: "HelveticaNeue",Helvetica,Arial,sans-serif;
-  padding: 18px 0px;
-  text-decoration: none;
-  width: 100%;
-}
-
-#navbar li a:hover {
-  color: #E5E6EA;
+nav button {
+  background-color: transparent; /* Set the background color of the buttons to transparent */
+  border: none; /* Remove the button border */
+  color: #ffffff; /* Set the color of the button text */
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 16px; /* Set the font size of the button text */
+  padding: 50px; /* Add padding around the button text */
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the buttons */
 }
 
 #sidebar {
