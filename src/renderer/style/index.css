@@ -6,17 +6,6 @@ body {
   margin: 0;
   background-color: #111111;
 }
-
-#main-content {
-  background-color: #111111;
-}
-
-#main-content p {
-  background-color: #111111;
-}
-#p {
-  background-color: #111111;
-}
 /* Hide the menu bar */
 body > .titlebar {
   display: none;
@@ -26,7 +15,10 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: transparent; /* Set the background color of the navigation bar to transparent */
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 
 nav button {
@@ -36,89 +28,11 @@ nav button {
   margin-right: auto;
   margin-left: auto;
   font-size: 16px; /* Set the font size of the button text */
-  padding: 50px; /* Add padding around the button text */
+  padding: 10px 20px; /* Add padding around the button text */
   cursor: pointer; /* Change the cursor to a pointer when hovering over the buttons */
 }
 
-#sidebar {
-  position: fixed;
-  bottom: -9px;
-  right: -600px;
-  width: 600px;
-  min-height: 100%;
-  background-color: #212121;
-  z-index: 1;
-  transition: all 0.5s ease-in-out;
-  margin-bottom: 0;
+nav button:hover {
+  background-color: #ffffff; /* Set the background color of the buttons on hover */
+  color: #111111; /* Set the color of the button text on hover */
 }
-
-#sidebar.show {
-  right: 0;
-}
-
-#toggle-sidebar {
-  position: fixed;
-  top: 100px;
-  left: 50px;
-  width: 300px;
-  height: 150px;
-  border-radius: 12px;
-  border-style: hidden;
-  margin: 0;
-  padding: 0;
-  background-position: center center;
-  background-image: url("../assets/NewCharacter.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  list-style: none; /*Remove bullet points*/
-  font-family: Trajan Pro; /* Change the font family */
-  font-size: 24px; /* Change the font size */
-  color: #ffffff; /* Change the font color */
-
-}
-
-#toggle-sidebar p {
-  margin: 0;
-  padding: 0;
-}
-
-#toggle-sidebar:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
-}
-
-#toggle-sidebar {
-  transition: all 0.3s ease-in-out;
-}
-
-#close-sidebar {
-  position: absolute;
-  bottom: 200px;
-  right: 50px;
-}
-
-#Create-Character {
-  position: absolute;
-}
-
-#gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#gallery a {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#gallery img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin: 10px;
-}
-
