@@ -65,7 +65,8 @@ function startCharacterCreation(sidebar) {
 
     const submitButton = document.createElement('button');
     submitButton.textContent = 'Next';
-    submitButton.addEventListener('click', () => {
+    submitButton.addEventListener('click', (event) => {
+        event.preventDefault();
         const characterData = {
             name: nameInput.value,
             level: levelInput.value
@@ -74,10 +75,12 @@ function startCharacterCreation(sidebar) {
         // Save character data locally within the database folder
         // Example: Save character data to a JSON file
         localStorage.setItem('characterData', JSON.stringify(characterData));
+        console.log("Got character data:", characterData);
         
-        location.replace('../../Race/Race.html');
+        //window.location.href = './Race/Race.html';
         // Send an IPC message to the main process to navigate to the Race PAge
-        ipcRenderer.send('sidebar-to-race-page');
+        electronAPI.send('sidebar-to-race-page');
+        console.log("Sent to race page")
     });
     form.appendChild(submitButton);
 

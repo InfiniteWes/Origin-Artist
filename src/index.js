@@ -28,14 +28,17 @@ const createWindow = () => {
   })
 
   ipcMain.on('sidebar-to-race-page', (event) => {
-    // Assuming mainWindow is your main BrowserWindow instance
+    console.log("Received 'sidebar-to-race-page' IPC message"); // Log the receipt of the IPC message
     const mainWindow = BrowserWindow.getFocusedWindow();
-  
+
     if (mainWindow) {
-        // Adjust the path as necessary based on your file structure
-        mainWindow.loadFile(path.join(__dirname, 'renderer','components', 'Race', 'Race.html'));
+        mainWindow.loadFile(path.join(__dirname, 'renderer', 'components', 'Race', 'Race.html'));
+        console.log("Navigating to Race.html"); // Log the navigation attempt
+    } else {
+        console.log("Main window not found"); // Log if the main window instance is not found
     }
   });
+
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
