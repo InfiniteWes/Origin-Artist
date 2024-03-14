@@ -16,5 +16,14 @@ function Sidebarlimit() {
     }
 }
 
+dbRef.once('value')
+    .then((snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+    })
+    .catch((error) => {
+        console.error(error);
+    })
+
 addCharacterButton.addEventListener('click', Sidebarlimit);
 document.body.appendChild(addCharacterButton);

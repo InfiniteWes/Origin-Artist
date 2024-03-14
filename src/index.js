@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const { initializeApp } = require('firebase/app');
+const { getDatabase, ref } = require('firebase/database');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -47,6 +49,21 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCgpNqA8O17ptu5_5OHSQM54C_rQdmOjC8",
+  authDomain: "origin-artist.firebaseapp.com",
+  projectId: "origin-artist",
+  storageBucket: "origin-artist.appspot.com",
+  messagingSenderId: "139641712145",
+  appId: "1:139641712145:web:caecf51d38fd2909810bb0",
+  measurementId: "G-T2PFEX423F"
+};
+
+const firebaseapp = initializeApp(firebaseConfig);
+
+const db = getDatabase(firebaseapp);
+
+const dbRef = ref(db, '/Races/Dragonborn/element');
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
