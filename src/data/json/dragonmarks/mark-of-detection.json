@@ -1,0 +1,223 @@
+{
+    "info": {
+        "update": {
+            "@version": "0.0.1",
+            "file": {
+                "@name": "mark-of-detection.xml",
+                "@url": "https://raw.githubusercontent.com/aurorabuilder/elements/master/supplements/eberron-rising-from-the-last-war/dragonmarks/mark-of-detection.xml"
+            }
+        }
+    },
+    "element": [
+        {
+            "@name": "Mark of Detection",
+            "@type": "Race Variant",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACE_VARIANT_MARK_OF_DETECTION",
+            "supports": "Half-Elf Variant",
+            "description": {
+                "p": [
+                    "The Mark of Detection is an inquisitive’s dream. It sharpens powers of observation and intuition, allowing the bearer to draw connections and interpret clues others might miss. By actively drawing on its powers, the bearer can detect poisons and study the energies of magic.",
+                    "If your half-elf character has the Mark of Detection, the following traits replace the half-elf’s Ability Score Increase and Skill Versatility traits in the Player’s Handbook.",
+                    {
+                        "strong": {
+                            "em": "Ability Score Increase."
+                        },
+                        "#text": "Your Wisdom score increases by 2, and one other ability score of your choice increases by 1."
+                    },
+                    {
+                        "strong": {
+                            "em": "Deductive Intuition."
+                        },
+                        "#text": "When you make an Intelligence (Investigation) or a Wisdom (Insight) check, you can roll a d4 and add the number rolled to the ability check."
+                    },
+                    {
+                        "strong": {
+                            "em": "Magical Detection."
+                        },
+                        "#text": "You can cast the detect magic and detect poison and disease spells with this trait. Starting at 3rd level, you can also cast the see invisibility spell with it. Once you cast any of these spells with this trait, you can’t cast that spell with it again until you finish a long rest. Intelligence is your spellcasting ability for these spells, and you don’t require material components for them."
+                    },
+                    {
+                        "strong": {
+                            "em": "Spells of the Mark."
+                        },
+                        "#text": "If you have the Spellcasting or the Pact Magic class feature, the spells on the Mark of Detection Spells table are added to the spell list of your spellcasting class."
+                    },
+                    {
+                        "strong": "MARK OF DETECTION SPELLS"
+                    }
+                ],
+                "table": {
+                    "thead": {
+                        "tr": [
+                            "Spell Level",
+                            "Spells"
+                        ]
+                    },
+                    "tr": [
+                        "1st",
+                        {
+                            "em": "detect evil and good, detect poison and disease"
+                        },
+                        [
+                            "2nd",
+                            {
+                                "em": "detect thoughts, find traps"
+                            }
+                        ],
+                        [
+                            "3rd",
+                            {
+                                "em": "clairvoyance, nondetection"
+                            }
+                        ],
+                        [
+                            "4th",
+                            {
+                                "em": "arcane eye, divination"
+                            }
+                        ],
+                        [
+                            "5th",
+                            {
+                                "em": "legend lore"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "sheet": {
+                "@alt": "Half-Elf (Mark of Detection)",
+                "@display": "false"
+            },
+            "rules": {
+                "grant": [
+                    {
+                        "@type": "Dragonmark",
+                        "@id": "ID_WOTC_ERLW_DRAGONMARK_MARK_OF_DETECTION"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_DEDUCTIVE_INTUITION"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_MAGICAL_DETECTION"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_SPELLS_OF_THE_MARK"
+                    }
+                ],
+                "stat": {
+                    "@name": "wisdom",
+                    "@value": "2",
+                    "@alt": "Dragonmark"
+                },
+                "select": {
+                    "@type": "Racial Trait",
+                    "@name": "Ability Score Increase, Mark of Detection",
+                    "@supports": "Ability Score Increase,Dragonmark,!Wisdom"
+                }
+            }
+        },
+        {
+            "@name": "Deductive Intuition",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_DEDUCTIVE_INTUITION",
+            "description": {
+                "p": "When you make an Intelligence (Investigation) or a Wisdom (Insight) check, you can roll a d4 and add the number rolled to the ability check."
+            },
+            "sheet": {
+                "description": "When you make an Investigation or a Insight check, you can roll a d4 and add the number rolled to the ability check."
+            }
+        },
+        {
+            "@name": "Magical Detection",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_MAGICAL_DETECTION",
+            "description": {
+                "p": "You can cast the detect magic and detect poison and disease spells with this trait. Starting at 3rd level, you can also cast the see invisibility spell with it. Once you cast any of these spells with this trait, you can’t cast that spell with it again until you finish a long rest. Intelligence is your spellcasting ability for these spells, and you don’t require material components for them."
+            },
+            "sheet": {
+                "@usage": "1/Long Rest",
+                "description": [
+                    "You can cast the detect magic and detect poison and disease spells with this trait using Intelligence as your spellcasting ability",
+                    {
+                        "@level": "3",
+                        "#text": "You can cast the detect magic, detect poison and disease, and invisibility spells with this trait using Intelligence as your spellcasting ability"
+                    }
+                ]
+            }
+        },
+        {
+            "@name": "Spells of the Mark",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_DETECTION_SPELLS_OF_THE_MARK",
+            "description": {
+                "p": "If you have the Spellcasting or the Pact Magic class feature, the spells on the Mark of Detection Spells table are added to the spell list of your spellcasting class.",
+                "h5": "Mark of Detection Spells",
+                "table": {
+                    "thead": {
+                        "tr": [
+                            "Spell Level",
+                            "Spells"
+                        ]
+                    },
+                    "tr": [
+                        "1st",
+                        {
+                            "em": "detect evil and good, detect poison and disease"
+                        },
+                        [
+                            "2nd",
+                            {
+                                "em": "detect thoughts, find traps"
+                            }
+                        ],
+                        [
+                            "3rd",
+                            {
+                                "em": "clairvoyance, nondetection"
+                            }
+                        ],
+                        [
+                            "4th",
+                            {
+                                "em": "arcane eye, divination"
+                            }
+                        ],
+                        [
+                            "5th",
+                            {
+                                "em": "legend lore"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "sheet": {
+                "@display": "false",
+                "description": "The spells on the Mark of Detection Spells table are added to the spell list of your spellcasting class."
+            },
+            "spellcasting": {
+                "@all": "true",
+                "@extend": "true",
+                "extend": [
+                    "ID_PHB_SPELL_DETECT_EVIL_AND_GOOD",
+                    "ID_PHB_SPELL_DETECT_POISON_AND_DISEASE",
+                    "ID_PHB_SPELL_DETECT_THOUGHTS",
+                    "ID_PHB_SPELL_FIND_TRAPS",
+                    "ID_PHB_SPELL_CLAIRVOYANCE",
+                    "ID_PHB_SPELL_NONDETECTION",
+                    "ID_PHB_SPELL_ARCANE_EYE",
+                    "ID_PHB_SPELL_DIVINATION",
+                    "ID_PHB_SPELL_LEGEND_LORE"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,687 @@
+{
+    "info": {
+        "name": "Dragonborn",
+        "description": [],
+        "author": {
+            "@url": "http://dnd.wizards.com/products/tabletop-games/rpg-products/rpg_playershandbook",
+            "#text": "Wizards of the Coast"
+        },
+        "update": {
+            "@version": "0.2.3",
+            "file": {
+                "@name": "race-dragonborn.xml",
+                "@url": "https://raw.githubusercontent.com/aurorabuilder/elements/master/core/players-handbook/races/race-dragonborn.xml"
+            }
+        }
+    },
+    "element": [
+        {
+            "@name": "Dragonborn",
+            "@type": "Race",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACE_DRAGONBORN",
+            "description": {
+                "p": [
+                    "Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. Some dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.",
+                    "Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail. The first dragonborn had scales of vibrant hues matching the colors of their dragon kin, but generations of interbreeding have created a more uniform appearance. Their small, fine scales are usually brass or bronze in color, sometimes ranging to scarlet, rust, gold, or copper-green. They are tall and strongly built, often standing close to 6 1/2 feet tall and weighing 300 pounds or more. Their hands and feet are strong, talonlike claws with three fingers and a thumb on each hand.",
+                    "The blood of a particular type of dragon runs very strong through some dragonborn clans. These dragonborn often boast scales that more closely match those of their dragon ancestor—bright red, green, blue, or white, lustrous black, or gleaming metallic gold, silver, brass, copper, or bronze.",
+                    "To any dragonborn, the clan is more important than life itself. Dragonborn owe their devotion and respect to their clan above all else, even the gods. Each dragonborn’s conduct reflects on the honor of his or her clan, and bringing dishonor to the clan can result in expulsion and exile. Each dragonborn knows his or her station and duties within the clan, and honor demands maintaining the bounds of that position.",
+                    "A continual drive for self-improvement reflects the self-sufficiency of the race as a whole. Dragonborn value skill and excellence in all endeavors. They hate to fail, and they push themselves to extreme efforts before they give up on something. A dragonborn holds mastery of a particular skill as a lifetime goal. Members of other races who share the same commitment find it easy to earn the respect of a dragonborn.",
+                    "Though all dragonborn strive to be self-sufficient, they recognize that help is sometimes needed in difficult situations. But the best source for such help is the clan, and when a clan needs help, it turns to another dragonborn clan before seeking aid from other races— or even from the gods.",
+                    "Dragonborn have personal names given at birth, but they put their clan names first as a mark of honor. A childhood name or nickname is often used among clutchmates as a descriptive term or a term of endearment. The name might recall an event or center on a habit.",
+                    {
+                        "b": [
+                            "Male Names:",
+                            "Female Names:",
+                            "Childhood Names:",
+                            "Clan Names:"
+                        ],
+                        "#text": [
+                            "Arjhan, Balasar, Bharash, Donaar, Ghesh, Heskan, Kriv, Medrash, Mehen, Nadarr, Pandjed, Patrin, Rhogar, Shamash, Shedinn, Tarhun, Torinn",
+                            "Akra, Biri, Daar, Farideh, Harann, Flavilar, Jheri, Kava, Korinn, Mishann, Nala, Perra, Raiann, Sora, Surina, Thava, Uadjit",
+                            "Climber, Earbender, Leaper, Pious, Shieldbiter, Zealous",
+                            "Clethtinthiallor, Daardendrian, Delmirev, Drachedandion, Fenkenkabradon, Kepeshkmolik, Kerrhylon, Kimbatuul, Linxakasendalor, Myastan, Nemmonis, Norixius, Ophinshtalajiir, Prexijandilin, Shestendeliath, Turnuroth, Verthisathurgiesh, Yarjerit"
+                        ],
+                        "br": [
+                            [],
+                            [],
+                            []
+                        ]
+                    },
+                    "Your draconic heritage manifests in a variety of traits you share with other dragonborn.",
+                    {
+                        "span": [
+                            "Ability Score Increase.",
+                            "Age.",
+                            "Alignment.",
+                            "Size.",
+                            "Speed.",
+                            "Draconic Ancestry.",
+                            "Breath Weapon.",
+                            "Damage Resistance.",
+                            "Languages."
+                        ],
+                        "#text": [
+                            "Your Strength score increases by 2, and your Charisma score increases by 1.",
+                            "Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80.",
+                            "Dragonborn tend to extremes, making a conscious choice for one side or the other in the cosmic war between good and evil (represented by Bahamut and Tiamat, respectively). Most dragonborn are good, but those who side with Tiamat can be terrible villains.",
+                            "Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium.",
+                            "Your base walking speed is 30 feet.",
+                            "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.",
+                            "You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can’t use it again until you complete a short or long rest.",
+                            "You have resistance to the damage type associated with your draconic ancestry.",
+                            "You can speak, read, and write Common and Draconic. Draconic is thought to be one of the oldest languages and is often used in the study of magic. The language sounds harsh to most other creatures and includes numerous hard consonants and sibilants."
+                        ],
+                        "br": [
+                            [],
+                            [],
+                            [],
+                            [],
+                            [],
+                            [],
+                            [],
+                            []
+                        ]
+                    }
+                ],
+                "h4": [
+                    "PROUD DRAGONKIN",
+                    "SELF-SUFFICIENT CLANS",
+                    "DRAGONBORN NAMES",
+                    "DRAGONBORN TRAITS"
+                ]
+            },
+            "sheet": {
+                "@display": "false"
+            },
+            "setters": [
+                {
+                    "@name": "names",
+                    "@type": "male",
+                    "#text": "Arjhan, Balasar, Bharash, Donaar, Ghesh, Heskan, Kriv, Medrash, Mehen, Nadarr, Pandjed, Patrin, Rhogar, Shamash, Shedinn, Tarhun, Torinn"
+                },
+                {
+                    "@name": "names",
+                    "@type": "female",
+                    "#text": "Akra, Biri, Daar, Farideh, Harann, Flavilar, Jheri, Kava, Korinn, Mishann, Nala, Perra, Raiann, Sora, Surina, Thava, Uadjit"
+                },
+                {
+                    "@name": "names",
+                    "@type": "childhood",
+                    "#text": "Climber, Earbender, Leaper, Pious, Shieldbiter, Zealous"
+                },
+                {
+                    "@name": "names",
+                    "@type": "clan",
+                    "#text": "Clethtinthiallor, Daardendrian, Delmirev, Drachedandion, Fenkenkabradon, Kepeshkmolik, Kerrhylon, Kimbatuul, Linxakasendalor, Myastan, Nemmonis, Norixius, Ophinshtalajiir, Prexijandilin, Shestendeliath, Turnuroth, Verthisathurgiesh, Yarjerit"
+                },
+                {
+                    "@name": "names-format",
+                    "#text": "{{name}} {{clan}}"
+                },
+                {
+                    "@name": "height",
+                    "@modifier": "2d8",
+                    "#text": "5'6\""
+                },
+                {
+                    "@name": "weight",
+                    "@modifier": "2d6",
+                    "#text": "175 lb."
+                }
+            ],
+            "rules": {
+                "stat": [
+                    {
+                        "@name": "strength",
+                        "@value": "2",
+                        "@requirements": "!ID_WOTC_EGTW_GRANTS_DRAGONBORN_VARIANT"
+                    },
+                    {
+                        "@name": "charisma",
+                        "@value": "1",
+                        "@requirements": "!ID_WOTC_EGTW_GRANTS_DRAGONBORN_VARIANT"
+                    },
+                    {
+                        "@name": "innate speed",
+                        "@value": "30",
+                        "@bonus": "base"
+                    }
+                ],
+                "grant": [
+                    {
+                        "@type": "Size",
+                        "@id": "ID_SIZE_MEDIUM"
+                    },
+                    {
+                        "@type": "Language",
+                        "@id": "ID_LANGUAGE_COMMON"
+                    },
+                    {
+                        "@type": "Language",
+                        "@id": "ID_LANGUAGE_DRACONIC"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_RACIAL_TRAIT_BREATH_WEAPON"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_RACIAL_TRAIT_DAMAGE_RESISTANCE",
+                        "@requirements": "!ID_WOTC_EGTW_GRANTS_DRAGONBORN_VARIANT"
+                    }
+                ],
+                "select": {
+                    "@type": "Race Variant",
+                    "@name": "Dragonborn Variant",
+                    "@supports": "Dragonborn",
+                    "@optional": "true"
+                }
+            }
+        },
+        {
+            "@name": "Draconic Ancestry",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY",
+            "description": {
+                "p": "You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.",
+                "h5": "DRACONIC ANCESTRY",
+                "table": {
+                    "thead": {
+                        "tr": [
+                            "Dragon",
+                            "Damage Type",
+                            "Breath Weapon"
+                        ]
+                    },
+                    "tr": [
+                        "Black",
+                        "Acid",
+                        "5 by 30 ft. line (Dex. save)",
+                        [
+                            "Blue",
+                            "Lightning",
+                            "5 by 30 ft. line (Dex. save)"
+                        ],
+                        [
+                            "Brass",
+                            "Fire",
+                            "5 by 30 ft. line (Dex. save)"
+                        ],
+                        [
+                            "Bronze",
+                            "Lightning",
+                            "5 by 30 ft. line (Dex. save)"
+                        ],
+                        [
+                            "Copper",
+                            "Acid",
+                            "5 by 30 ft. line (Dex. save)"
+                        ],
+                        [
+                            "Gold",
+                            "Fire",
+                            "15 ft. cone (Dex. save)"
+                        ],
+                        [
+                            "Green",
+                            "Poison",
+                            "15 ft. cone (Con. save)"
+                        ],
+                        [
+                            "Red",
+                            "Fire",
+                            "15 ft. cone (Dex. save)"
+                        ],
+                        [
+                            "Silver",
+                            "Cold",
+                            "15 ft. cone (Con. save)"
+                        ],
+                        [
+                            "White",
+                            "Cold",
+                            "15 ft. cone (Con. save)"
+                        ]
+                    ]
+                }
+            },
+            "rules": {
+                "select": {
+                    "@type": "Racial Trait",
+                    "@name": "Draconic Ancestry",
+                    "@supports": "Draconic Ancestry"
+                }
+            }
+        },
+        {
+            "@name": "Breath Weapon",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_BREATH_WEAPON",
+            "description": [
+                "You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation.",
+                "When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level.",
+                "After you use your breath weapon, you can’t use it again until you complete a short or long rest."
+            ],
+            "sheet": {
+                "@action": "Action",
+                "@usage": "1/Short Rest",
+                "description": "Exhale destructive energy. Your breath weapon does {{breath-weapon:dice count}}d{{breath-weapon:dice size}} {{draconic-ancestry:damage type}} damage in a {{draconic-ancestry:breath}} DC {{breath-weapon:dc}}"
+            },
+            "rules": [
+                {
+                    "@name": "breath-weapon:dc",
+                    "@value": "8"
+                },
+                {
+                    "@name": "breath-weapon:dc",
+                    "@value": "constitution:modifier"
+                },
+                {
+                    "@name": "breath-weapon:dc",
+                    "@value": "proficiency"
+                },
+                {
+                    "@name": "breath-weapon:dice size",
+                    "@value": "6",
+                    "@bonus": "dice"
+                },
+                {
+                    "@name": "breath-weapon:dice count",
+                    "@value": "2",
+                    "@level": "1"
+                },
+                {
+                    "@name": "breath-weapon:dice count",
+                    "@value": "1",
+                    "@level": "6"
+                },
+                {
+                    "@name": "breath-weapon:dice count",
+                    "@value": "1",
+                    "@level": "11"
+                },
+                {
+                    "@name": "breath-weapon:dice count",
+                    "@value": "1",
+                    "@level": "16"
+                }
+            ]
+        },
+        {
+            "@name": "Damage Resistance",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DAMAGE_RESISTANCE",
+            "description": {
+                "p": "You have resistance to the damage type associated with your draconic ancestry."
+            },
+            "sheet": {
+                "description": "You have resistance to {{draconic-ancestry:damage type}}."
+            },
+            "rules": [
+                {
+                    "@type": "Condition",
+                    "@id": "ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_ACID",
+                    "@requirements": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BLACK||ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_COPPER"
+                },
+                {
+                    "@type": "Condition",
+                    "@id": "ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_LIGHTNING",
+                    "@requirements": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BLUE||ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BRONZE"
+                },
+                {
+                    "@type": "Condition",
+                    "@id": "ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_FIRE",
+                    "@requirements": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BRASS||ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_GOLD||ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_RED"
+                },
+                {
+                    "@type": "Condition",
+                    "@id": "ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_POISON",
+                    "@requirements": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_GREEN"
+                },
+                {
+                    "@type": "Condition",
+                    "@id": "ID_INTERNAL_CONDITION_DAMAGE_RESISTANCE_COLD",
+                    "@requirements": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_SILVER||ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_WHITE"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Black)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BLACK",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Black",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Black"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Acid"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "5 by 30 ft. line (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Blue)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BLUE",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Blue",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Blue"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Lightning"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "5 by 30 ft. line (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Brass)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BRASS",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Brass",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Brass"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Fire"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "5 by 30 ft. line (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Bronze)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_BRONZE",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Bronze",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Bronze"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Lightning"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "5 by 30 ft. line (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Copper)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_COPPER",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Copper",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Copper"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Acid"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "5 by 30 ft. line (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Gold)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_GOLD",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Gold",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Gold"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Fire"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "15 ft. cone (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Green)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_GREEN",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Green",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Green"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Poison"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "15 ft. cone (Con. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Red)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_RED",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Red",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Red"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Fire"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "15 ft. cone (Dex. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (Silver)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_SILVER",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "Silver",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "Silver"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Cold"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "15 ft. cone (Con. save)"
+                }
+            ]
+        },
+        {
+            "@name": "Draconic Ancestry (White)",
+            "@type": "Racial Trait",
+            "@source": "Player’s Handbook",
+            "@id": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY_WHITE",
+            "supports": "Draconic Ancestry",
+            "description": {
+                "div": {
+                    "@element": "ID_RACIAL_TRAIT_DRACONIC_ANCESTRY"
+                }
+            },
+            "sheet": {
+                "@alt": "White",
+                "description": "Your draconic ancestry is {{draconic-ancestry}}. Your damage type is {{draconic-ancestry:damage type}}. Your breath weapon is {{draconic-ancestry:breath}}."
+            },
+            "rules": [
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry",
+                    "@value": "White"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:damage type",
+                    "@value": "Cold"
+                },
+                {
+                    "@inline": "true",
+                    "@name": "draconic-ancestry:breath",
+                    "@value": "15 ft. cone (Con. save)"
+                }
+            ]
+        }
+    ]
+}

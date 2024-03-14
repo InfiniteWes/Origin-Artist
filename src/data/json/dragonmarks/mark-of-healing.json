@@ -1,0 +1,217 @@
+{
+    "info": {
+        "update": {
+            "@version": "0.0.1",
+            "file": {
+                "@name": "mark-of-healing.xml",
+                "@url": "https://raw.githubusercontent.com/aurorabuilder/elements/master/supplements/eberron-rising-from-the-last-war/dragonmarks/mark-of-healing.xml"
+            }
+        }
+    },
+    "element": [
+        {
+            "@name": "Mark of Healing",
+            "@type": "Sub Race",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_SUB_RACE_MARK_OF_HEALING",
+            "supports": "Halfling",
+            "description": {
+                "p": [
+                    "A halfling with the Mark of Healing can save a life with a touch, restoring vitality and the will to live. When dealing with mundane medicine, the mark helps its bearer sense the nature of maladies, aiding them in finding a cure. When equipped with dragonshard focus items, the mark can even draw the dead back from the depths of Dolurrh.",
+                    "If you’re a halfling with the Mark of Healing, you have this subrace, with the following traits.",
+                    {
+                        "strong": {
+                            "em": "Ability Score Increase."
+                        },
+                        "#text": "Your Wisdom score increases by 1."
+                    },
+                    {
+                        "strong": {
+                            "em": "Medical Intuition."
+                        },
+                        "#text": "When you make a Wisdom (Medicine) check or an ability check using an herbalism kit, you can roll a d4 and add the number rolled to the ability check."
+                    },
+                    {
+                        "strong": {
+                            "em": "Healing Touch."
+                        },
+                        "#text": "You can cast the cure wounds spell with this trait. Starting at 3rd level, you can also cast lesser restoration with it. Once you cast either spell with this trait, you can’t cast that spell with it again until you finish a long rest. Wisdom is your spellcasting ability for these spells."
+                    },
+                    {
+                        "strong": {
+                            "em": "Spells of the Mark."
+                        },
+                        "#text": "If you have the Spellcasting or the Pact Magic class feature, the spells on the Mark of Healing Spells table are added to the spell list of your spellcasting class."
+                    },
+                    {
+                        "strong": "MARK OF HEALING SPELLS"
+                    }
+                ],
+                "table": {
+                    "thead": {
+                        "tr": [
+                            "Spell Level",
+                            "Spells"
+                        ]
+                    },
+                    "tr": [
+                        "1st",
+                        {
+                            "em": "cure wounds, healing word"
+                        },
+                        [
+                            "2nd",
+                            {
+                                "em": "lesser restoration, prayer of healing"
+                            }
+                        ],
+                        [
+                            "3rd",
+                            {
+                                "em": "aura of vitality, mass healing word"
+                            }
+                        ],
+                        [
+                            "4th",
+                            {
+                                "em": "aura of purity, aura of life"
+                            }
+                        ],
+                        [
+                            "5th",
+                            {
+                                "em": "greater restoration"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "sheet": {
+                "@alt": "Halfling (Mark of Healing)",
+                "@display": "false"
+            },
+            "rules": {
+                "grant": [
+                    {
+                        "@type": "Dragonmark",
+                        "@id": "ID_WOTC_ERLW_DRAGONMARK_MARK_OF_HEALING"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_MEDICAL_INTUITION"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_HEALING_TOUCH"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_SPELLS_OF_THE_MARK"
+                    }
+                ],
+                "stat": {
+                    "@name": "wisdom",
+                    "@value": "1"
+                }
+            }
+        },
+        {
+            "@name": "Medical Intuition",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_MEDICAL_INTUITION",
+            "description": {
+                "p": "When you make a Wisdom (Medicine) check or an ability check using an herbalism kit, you can roll a d4 and add the number rolled to the ability check."
+            },
+            "sheet": {
+                "description": "When you make a Medicine check or an ability check using an herbalism kit, you can roll a d4 and add the number rolled to the ability check."
+            }
+        },
+        {
+            "@name": "Healing Touch",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_HEALING_TOUCH",
+            "description": {
+                "p": "You can cast the cure wounds spell with this trait. Starting at 3rd level, you can also cast lesser restoration with it. Once you cast either spell with this trait, you can’t cast that spell with it again until you finish a long rest. Wisdom is your spellcasting ability for these spells."
+            },
+            "sheet": {
+                "@usage": "1/Long Rest",
+                "description": [
+                    "You can cast the cure wounds spell with this trait using Wisdom as your spellcasting ability.",
+                    {
+                        "@level": "3",
+                        "#text": "You can cast the cure wounds and lesser restoration spells with this trait using Wisdom as your spellcasting ability."
+                    }
+                ]
+            }
+        },
+        {
+            "@name": "Spells of the Mark",
+            "@type": "Racial Trait",
+            "@source": "Eberron: Rising from the Last War",
+            "@id": "ID_WOTC_ERLW_RACIAL_TRAIT_MARK_OF_HEALING_SPELLS_OF_THE_MARK",
+            "description": {
+                "p": "If you have the Spellcasting or the Pact Magic class feature, the spells on the Mark of Healing Spells table are added to the spell list of your spellcasting class.",
+                "h5": "Mark of Healing Spells",
+                "table": {
+                    "thead": {
+                        "tr": [
+                            "Spell Level",
+                            "Spells"
+                        ]
+                    },
+                    "tr": [
+                        "1st",
+                        {
+                            "em": "cure wounds, healing word"
+                        },
+                        [
+                            "2nd",
+                            {
+                                "em": "lesser restoration, prayer of healing"
+                            }
+                        ],
+                        [
+                            "3rd",
+                            {
+                                "em": "aura of vitality, mass healing word"
+                            }
+                        ],
+                        [
+                            "4th",
+                            {
+                                "em": "aura of purity, aura of life"
+                            }
+                        ],
+                        [
+                            "5th",
+                            {
+                                "em": "greater restoration"
+                            }
+                        ]
+                    ]
+                }
+            },
+            "sheet": {
+                "@display": "false",
+                "description": "The spells on the Mark of Healing Spells table are added to the spell list of your spellcasting class."
+            },
+            "spellcasting": {
+                "@all": "true",
+                "@extend": "true",
+                "extend": [
+                    "ID_PHB_SPELL_CURE_WOUNDS",
+                    "ID_PHB_SPELL_HEALING_WORD",
+                    "ID_PHB_SPELL_LESSER_RESTORATION",
+                    "ID_PHB_SPELL_PRAYER_OF_HEALING",
+                    "ID_PHB_SPELL_AURA_OF_VITALITY",
+                    "ID_PHB_SPELL_MASS_HEALING_WORD",
+                    "ID_PHB_SPELL_AURA_OF_PURITY",
+                    "ID_PHB_SPELL_AURA_OF_LIFE",
+                    "ID_PHB_SPELL_GREATER_RESTORATION"
+                ]
+            }
+        }
+    ]
+}

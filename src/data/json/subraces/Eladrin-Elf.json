@@ -1,0 +1,88 @@
+{
+    "info": {
+        "name": "Eladrin",
+        "description": "Subrace from the Dungeon Master’s Guide\".",
+        "author": {
+            "@url": "http://dnd.wizards.com/products/tabletop-games/rpg-products/dungeon-masters-guide",
+            "#text": "Wizards of the Coast"
+        },
+        "update": {
+            "@version": "0.0.7",
+            "file": {
+                "@name": "subrace-eladrin.xml",
+                "@url": "https://raw.githubusercontent.com/aurorabuilder/elements/master/dungeon-masters-guide/races/subrace-eladrin.xml"
+            }
+        }
+    },
+    "element": [
+        {
+            "@name": "Eladrin",
+            "@type": "Sub Race",
+            "@source": "Dungeon Master’s Guide",
+            "@id": "ID_DMG_SUBRACE_ELADRIN",
+            "supports": "Elf",
+            "description": [
+                "Creatures of magic with strong ties to nature, eladrin live in the twilight realm of the Feywild. Their cities sometimes cross over to the Material Plane, appearing briefly in mountain valleys or deep forest glades before fading back into the Feywild.",
+                {
+                    "strong": {
+                        "em": "Ability Score Increase."
+                    },
+                    "#text": "Your Intelligence score increases by 1."
+                },
+                {
+                    "strong": {
+                        "em": "Elf Weapon Training."
+                    },
+                    "#text": "You have proficiency with the longsword, shortsword, shortbow, and longbow."
+                },
+                {
+                    "strong": {
+                        "em": "Fey Step."
+                    },
+                    "#text": "You can cast the misty step spell once using this trait. You regain the ability to do so when you finish a short or long rest."
+                }
+            ],
+            "sheet": {
+                "@display": "false"
+            },
+            "rules": {
+                "stat": {
+                    "@name": "intelligence",
+                    "@value": "1"
+                },
+                "grant": [
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_RACIAL_TRAIT_ELF_WEAPON_TRAINING"
+                    },
+                    {
+                        "@type": "Racial Trait",
+                        "@id": "ID_DMG_RACIAL_TRAIT_FEY_STEP"
+                    }
+                ]
+            }
+        },
+        {
+            "@name": "Fey Step",
+            "@type": "Racial Trait",
+            "@source": "Dungeon Master’s Guide",
+            "@id": "ID_DMG_RACIAL_TRAIT_FEY_STEP",
+            "description": {
+                "p": "You can cast the misty step spell once using this trait. You regain the ability to do so when you finish a short or long rest.",
+                "div": {
+                    "@element": "ID_PHB_SPELL_MISTY_STEP"
+                }
+            },
+            "sheet": {
+                "@usage": "1/Short Rest",
+                "description": "You can cast the misty step spell once using this trait."
+            },
+            "rules": {
+                "grant": {
+                    "@type": "Spell",
+                    "@id": "ID_PHB_SPELL_MISTY_STEP"
+                }
+            }
+        }
+    ]
+}
