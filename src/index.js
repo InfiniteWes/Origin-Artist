@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { initializeApp } = require('firebase/app');
-const { getDatabase, ref } = require('firebase/database');
+const { getDatabase, ref, get } = require('firebase/database');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -25,6 +25,8 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true, // This should be enabled for contextBridge to work
+      nodeIntegration: false,
       
     },
   })
@@ -40,6 +42,24 @@ const createWindow = () => {
         console.log("Main window not found"); // Log if the main window instance is not found
     }
   });
+
+  ipcMain.on('request-race-data', async (event, raceName) => {
+    // Assuming raceName is a variable containing the name of the race you want data for
+    const raceDataRef = ref(db, `/Races/Dragonborn/element`);
+    get(raceDataRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const raceData = snapshot.val();
+        event.reply('race-data-response', raceData); // Send data back to renderer
+      } else {
+        console.log("No data available");
+        event.reply('race-data-response', null);
+      }
+    }).catch((error) => {
+      console.error(error);
+      event.reply('race-data-response', null);
+    });
+  });
+  
 
 
   // and load the index.html of the app.
@@ -63,7 +83,8 @@ const firebaseapp = initializeApp(firebaseConfig);
 
 const db = getDatabase(firebaseapp);
 
-const dbRef = ref(db, '/Races/Dragonborn/element');
+//const dbRef = ref(db, '/Races/Dragonborn/element');
+//module.exports = { dbRef };
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
