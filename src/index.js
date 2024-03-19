@@ -8,21 +8,35 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+
 const { Menu } = require('electron')
 
 const template = [
-   
+  {
+    label: 'Origin-Artist'
+  },
+  {
+    label: 'Window',
+    submenu: [
+      { role: 'minimize' },
+      { role: 'maximize' },
+      { role: 'close' }
+    ]
+  }
 ]
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
+// Splash Screen / loading Screeen
 
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
+    backgroundColor: 'white',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true, // This should be enabled for contextBridge to work
@@ -64,11 +78,31 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+  mainWindow.center();
+
+  var splash = new BrowserWindow({
+    width:500,
+    height:300,
+    transparent: false,
+    frame: false,
+    alwaysOnTop: true,
+  });
+  
+  splash.loadFile(path.join(__dirname, 'renderer', 'Splash.html'));
+  splash.center();
+  
+  setTimeout(function () {
+    splash.close();
+    mainWindow.show();
+  }, 3000);
+  
+  
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
 
+// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCgpNqA8O17ptu5_5OHSQM54C_rQdmOjC8",
   authDomain: "origin-artist.firebaseapp.com",
@@ -80,15 +114,18 @@ const firebaseConfig = {
 };
 
 const firebaseapp = initializeApp(firebaseConfig);
-
 const db = getDatabase(firebaseapp);
 
+// Splash Screen / loading Screeen
 //const dbRef = ref(db, '/Races/Dragonborn/element');
 //module.exports = { dbRef };
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  Menu.setApplicationMenu(menu);
+  createWindow();
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

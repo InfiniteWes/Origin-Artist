@@ -1,7 +1,8 @@
 // navigation.js
 
 // List of button names corresponding to your other JavaScript files
-const buttonNames = ["Home","Race","Class","Ability","Equipment", "Magic", "Manage"];
+const buttonNames = ["Home","Origin","Creator","Character Sheet"];
+const subButtonNames = ["Race","Class","Background","Ability","Magic","Equipment"];
 
 // Function to create the navigation bar
 // Function to create the navigation bar
@@ -15,7 +16,18 @@ function createNavigationBar() {
   buttonNames.forEach((buttonName) => {
     const button = document.createElement("button");
     button.textContent = buttonName;
-    button.addEventListener("click", () => {
+    if (buttonName === "home") {
+      button.addEventListener("click", () => {
+        window.location.href = "../../index.html";
+      });
+    } else {
+      button.style.opacity = 0.5;
+      button.style.cursor = "default";
+      button.disabled = true;
+    }
+
+    //button.addEventListener("click", () => {
+      /*
       if (buttonName !== currentPage.replace('.html', '')) {
         if (currentPage === "Race.html" && buttonName === "Home") {
           window.location.href = "../../index.html"; // Navigate to index.html from Race.html
@@ -44,8 +56,8 @@ function createNavigationBar() {
           }
           window.location.href = newPath;
         }
-      }
-    });
+      } */
+    //});
     navBar.appendChild(button);
   });
 
