@@ -56,6 +56,10 @@ function populateRaceTable(tbody, data) {
             handleRowSelection(raceData); // Pass the entire race data
         });
 
+        row.addEventListener('dblclick', () => {
+            selectRace(raceData);
+        });
+
         tbody.appendChild(row);
     });
 }
@@ -154,6 +158,45 @@ function requestAndDisplayRaceData() {
     });
 
     window.electronAPI.send('request-race-data', 'Dragonborn');
+}
+
+function selectRace(raceData) {
+    console.log("Race selected:", raceData.element[0]["@name"]); // For debugging
+
+    // Check if it's Dragonborn and has racial traits to be treated as subraces
+    if (raceData.element[0]["@name"] === "Dragonborn") {
+        const dragonbornSubraces = raceData.element.filter(item => item["@color"]);
+        displaySubraces(dragonbornSubraces, 'Dragonborn Ancestry');
+    } else if (raceData.element[0]["@name"] !== "Dragonborn") { // Check for other races with subraces
+        const subraces = raceData.element.filter(item => item["@type"] === "Sub Race" || item["@type"] === "Subrace" || item["@type"] === "Sub race");
+        displaySubraces(subraces, 'Subrace');
+    } else {
+        console.log("No subraces for this race");
+        // Proceed to the next step if no subraces
+    }
+}
+
+
+function displaySubraces(subraces, type) {
+    const tbody = document.querySelector('.race-table tbody');
+    tbody.innerHTML = ''; // Clear existing table rows
+
+    subraces.forEach(subrace => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        nameCell.textContent = subrace["@name"] + (type === 'Dragonborn Ancestry' ? ' Ancestry' : ''); // Add 'Ancestry' suffix for Dragonborn
+        row.appendChild(nameCell);
+
+        row.addEventListener('dblclick', () => {
+            selectSubrace(subrace); // Handle subrace selection on double click
+        });
+
+        tbody.appendChild(row);
+    });
+}
+
+function selectSubrace(subraceData) {
+    console.log(subraceData["@name"] + " selected"); // For debugging
 }
 
 requestAndDisplayRaceData();

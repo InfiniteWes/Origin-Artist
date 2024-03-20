@@ -10,7 +10,7 @@ addCharacterButton.textContent = '+';
 let sidebarcreation = false;
 function Sidebarlimit() {
     if (!sidebarcreation) {
-        createSidebar();
+        createSidebar(enableNavigation);
         sidebarcreation = true;
     } else {
         console.log('You can only have one character at a time!');

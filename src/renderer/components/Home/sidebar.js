@@ -1,4 +1,4 @@
-export function createSidebar() {
+export function createSidebar(onCharacterCreationComplete) {
     const sidebar = document.createElement('div');
     sidebar.id = 'sidebar';
     sidebar.textContent = 'This is some information in the sidebar.';
@@ -71,6 +71,10 @@ function startCharacterCreation(sidebar) {
             name: nameInput.value,
             level: levelInput.value
         };
+
+        if (typeof onCharacterCreationComplete === 'function') {
+            onCharacterCreationComplete();
+        }
 
         // Save character data locally within the database folder
         // Example: Save character data to a JSON file

@@ -48,8 +48,10 @@ const createWindow = () => {
 
   ipcMain.on('request-race-data', async (event, raceName) => {
     // Assuming raceName is a variable containing the name of the race you want data for
-    const raceDataRef = ref(db, `/main/races/`);
-    get(raceDataRef).then((snapshot) => {
+
+    // Get the base races from the database
+    const race_main_DataRef = ref(db, `/main/races/`);
+    get(race_main_DataRef).then((snapshot) => {
       if (snapshot.exists()) {
         const raceData = snapshot.val();
         event.reply('race-data-response', raceData); // Send data back to renderer
@@ -61,6 +63,10 @@ const createWindow = () => {
       console.error(error);
       event.reply('race-data-response', null);
     });
+
+    // Get the expansion races from the database
+    //const race_expansion_DataRef = ref(db, `/expansion/races/`);
+    
   });
   
 
