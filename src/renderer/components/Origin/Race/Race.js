@@ -78,54 +78,54 @@ function handleRowSelection(raceData) {
     detailsDiv.appendChild(nameHeader);
 
     // Display source
-const sourceParagraph = document.createElement('p');
-sourceParagraph.textContent = `Source: ${raceData.element[0]["@source"]}`;
-detailsDiv.appendChild(sourceParagraph);
+    const sourceParagraph = document.createElement('p');
+    sourceParagraph.textContent = `Source: ${raceData.element[0]["@source"]}`;
+    detailsDiv.appendChild(sourceParagraph);
 
-const descriptions = raceData.element[0]["description"]['p']; // Get the 'p' array from the description
+    const descriptions = raceData.element[0]["description"]['p']; // Get the 'p' array from the description
 
-if (descriptions && descriptions.length > 1) {
-    descriptions.slice(1).forEach(item => {
-        if (typeof item === 'string') {
-            // Directly append string items as new paragraphs
-            const paragraph = document.createElement('p');
-            paragraph.textContent = item;
-            detailsDiv.appendChild(paragraph);
-        } else if (typeof item === 'object') {
-            // If item.text is an array, iterate through it, otherwise treat it as a single string
-            const textItems = Array.isArray(item.text) ? item.text : [item.text];
-
-            textItems.forEach((textItem, index) => {
+    if (descriptions && descriptions.length > 1) {
+        descriptions.slice(1).forEach(item => {
+            if (typeof item === 'string') {
+                // Directly append string items as new paragraphs
                 const paragraph = document.createElement('p');
+                paragraph.textContent = item;
+                detailsDiv.appendChild(paragraph);
+            } else if (typeof item === 'object') {
+                // If item.text is an array, iterate through it, otherwise treat it as a single string
+                const textItems = Array.isArray(item.text) ? item.text : [item.text];
 
-                // Handle 'strong' elements with 'em' labels
-                if (item.strong && item.strong.em) {
-                    const strongElement = document.createElement('strong');
-                    const emElement = document.createElement('em');
-                    emElement.textContent = item.strong.em + ": "; // Include the 'em' label text
-                    strongElement.appendChild(emElement);
-                    paragraph.appendChild(strongElement); // Append 'strong' to the paragraph
-                }
+                textItems.forEach((textItem, index) => {
+                    const paragraph = document.createElement('p');
 
-                // Handle 'span' elements, ensuring each label is matched with its corresponding text item
-                if (item.span && item.span[index]) {
-                    const spanElement = document.createElement('span');
-                    spanElement.textContent = item.span[index] + ": "; // Add the span text with formatting
-                    paragraph.appendChild(spanElement);
-                }
+                    // Handle 'strong' elements with 'em' labels
+                    if (item.strong && item.strong.em) {
+                        const strongElement = document.createElement('strong');
+                        const emElement = document.createElement('em');
+                        emElement.textContent = item.strong.em + ": "; // Include the 'em' label text
+                        strongElement.appendChild(emElement);
+                        paragraph.appendChild(strongElement); // Append 'strong' to the paragraph
+                    }
 
-                // Append the text content after the label
-                paragraph.appendChild(document.createTextNode(textItem));
-                detailsDiv.appendChild(paragraph); // Append the paragraph to 'detailsDiv'
-            });
-        }
-    });
-} else {
-    // Handle case where there are no descriptions or only the first item
-    const descriptionParagraph = document.createElement('p');
-    descriptionParagraph.textContent = 'No additional description available';
-    detailsDiv.appendChild(descriptionParagraph);
-}
+                    // Handle 'span' elements, ensuring each label is matched with its corresponding text item
+                    if (item.span && item.span[index]) {
+                        const spanElement = document.createElement('span');
+                        spanElement.textContent = item.span[index] + ": "; // Add the span text with formatting
+                        paragraph.appendChild(spanElement);
+                    }
+
+                    // Append the text content after the label
+                    paragraph.appendChild(document.createTextNode(textItem));
+                    detailsDiv.appendChild(paragraph); // Append the paragraph to 'detailsDiv'
+                });
+            }
+        });
+    } else {
+        // Handle case where there are no descriptions or only the first item
+        const descriptionParagraph = document.createElement('p');
+        descriptionParagraph.textContent = 'No additional description available';
+        detailsDiv.appendChild(descriptionParagraph);
+    }
 
 
     // Further logic to display additional details can go here...
