@@ -12,17 +12,6 @@ if (require('electron-squirrel-startup')) {
 const { Menu } = require('electron')
 
 const template = [
-  {
-    label: 'Origin-Artist'
-  },
-  {
-    label: 'Window',
-    submenu: [
-      { role: 'minimize' },
-      { role: 'maximize' },
-      { role: 'close' }
-    ]
-  }
 ]
 
 const menu = Menu.buildFromTemplate(template)
@@ -50,7 +39,7 @@ const createWindow = () => {
     const mainWindow = BrowserWindow.getFocusedWindow();
 
     if (mainWindow) {
-        mainWindow.loadFile(path.join(__dirname, 'renderer', 'components', 'Race', 'Race.html'));
+        mainWindow.loadFile(path.join(__dirname, 'renderer', 'components','Origin', 'Race', 'Race.html'));
         console.log("Navigating to Race.html"); // Log the navigation attempt
     } else {
         console.log("Main window not found"); // Log if the main window instance is not found
@@ -59,7 +48,7 @@ const createWindow = () => {
 
   ipcMain.on('request-race-data', async (event, raceName) => {
     // Assuming raceName is a variable containing the name of the race you want data for
-    const raceDataRef = ref(db, `/Races/Dragonborn/element`);
+    const raceDataRef = ref(db, `/main/races/`);
     get(raceDataRef).then((snapshot) => {
       if (snapshot.exists()) {
         const raceData = snapshot.val();

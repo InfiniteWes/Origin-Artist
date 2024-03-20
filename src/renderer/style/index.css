@@ -6,33 +6,80 @@ body {
   margin: 0;
   background-color: #111111;
 }
+
 /* Hide the menu bar */
 body > .titlebar {
   display: none;
 }
 
-nav {
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: rgb(196, 196, 196);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: rgb(196, 196, 196);
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  color: rgb(255, 254, 254);
+  background-color: transparent;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: rgb(0, 102, 255);
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent; /* Set the background color of the navigation bar to transparent */
-  padding: 10px 20px;
-  box-sizing: border-box;
+  z-index: 1;
 }
 
-nav button {
-  background-color: transparent; /* Set the background color of the buttons to transparent */
-  border: none; /* Remove the button border */
-  color: #ffffff; /* Set the color of the button text */
-  margin-right: auto;
-  margin-left: auto;
-  font-size: 16px; /* Set the font size of the button text */
-  padding: 10px 20px; /* Add padding around the button text */
-  cursor: pointer; /* Change the cursor to a pointer when hovering over the buttons */
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
 }
 
-nav button:hover {
-  background-color: #ffffff; /* Set the background color of the buttons on hover */
-  color: #111111; /* Set the color of the button text on hover */
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.disabled {
+  pointer-events: none;
 }

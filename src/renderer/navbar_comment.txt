@@ -1,0 +1,32 @@
+//button.addEventListener("click", () => {
+      /*
+      if (buttonName !== currentPage.replace('.html', '')) {
+        if (currentPage === "Race.html" && buttonName === "Home") {
+          window.location.href = "../../index.html"; // Navigate to index.html from Race.html
+        } else if (currentPage === "Ability.html" && buttonName === "Home") {
+          window.location.href = "../../index.html";
+        } else if (currentPage === "Equipment.html" && buttonName === "Home") {
+          window.location.href = "../../index.html";
+        } else if (currentPage === "Magic.html" && buttonName === "Home") {
+          window.location.href = "../../index.html";
+        } else if (currentPage === "Manage.html" && buttonName === "Home") {
+          window.location.href = "../../index.html";
+        } else if (currentPage === "Class.html" && buttonName === "Home") {
+          window.location.href = "../../index.html"; // Navigate to index.html from Class.html
+        } else if (currentPage === "index.html" && buttonName === "Home") {
+          window.location.href = "index.html";
+        } else {
+          let newPath;
+          if (currentPage === "Race.html" || currentPage === "Class.html" || currentPage === "Ability.html" || currentPage === "Equipment.html" || currentPage === "Magic.html" || currentPage === "Manage.html") {
+            if (buttonName === "Magic" || buttonName === "Manage" || buttonName === "Equipment" || buttonName === "Ability" || buttonName === "Class" || buttonName === "Race") {
+              newPath = `../${buttonName}/${buttonName}.html`; // Navigate to the corresponding HTML page within the same directory
+            } else {
+              newPath = `../components/${buttonName}/${buttonName}.html`; // Navigate to the corresponding HTML page within the components directory
+            }
+          } else {
+            newPath = `./components/${buttonName}/${buttonName}.html`; // Navigate to the corresponding HTML page within the components directory
+          }
+          window.location.href = newPath;
+        }
+      } */
+    //});

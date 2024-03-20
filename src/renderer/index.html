@@ -8,15 +8,23 @@
 </head>
 <body>
     <!-- Your HTML content goes here -->
-    <script src="components/CharacterSheet/CharacterSheet.js"></script>
-    <script src="components/Equipment/Equipment.js"></script>
-    <script src="components/Magic/Magic.js"></script>
-    <script src="components/Manage/Manage.js"></script>
-    <script src="navbar.js"></script>
     <script type="module" src="components/Home/Home.js"></script>
-    <script src="components/Class/Class.js"></script>
-    <script src="components/Race/Race.js"></script>
-    <script src="components/Ability/Ability.js"></script>
     <!-- Additional script or content -->
+    <div class = "navbar">
+        <a href="/src/renderer/index.html">Home</a>
+        <div class = "subnav">
+            <button class = "subnavbtn">Origin <i class="fa fa-caret-down"></i></button>
+            <div class = "subnav-content">
+                <a href="components/Origin/Race/Race.html" class="disabled">Race</a>
+                <a href="components/Origin/Class/Class.html" class="disabled">Class</a>
+                <a href="components/Origin/Background/Background.html" class="disabled">Backgrounds</a>
+                <a href="components/Origin/Ability/Ability.html" class="disabled">Abilities</a>
+                <a href="components/Origin/Magic/Magic.html" class="disabled">Magic</a>
+                <a href="components/Origin/Equipment/Equipment.html" class="disabled">Equipment</a>
+            </div>
+        </div>
+        <a href="components/Creator/Creator.html">Creator</a>
+        <a href="components/CharacterSheet/CharacterSheet.html" class="disabled">Character Sheet</a>
+    </div>
 </body>
 </html>

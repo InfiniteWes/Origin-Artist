@@ -17,6 +17,22 @@ function Sidebarlimit() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('characterCreationComplete', enableNavigation);
+});
+
+function enableNavigation() {
+    document.querySelectorAll('.disabled').forEach(link => {
+        link.classList.remove('disabled');
+        link.style.pointerEvents = 'auto';
+    });
+}
+
+function simulateCharacterCreationComplete() {
+    const event = new CustomEvent('characterCreationComplete');
+    document.dispatchEvent(event);
+}
+
 /*ipcRenderer.send('request-race-data', 'Dragonborn');
 // Listen for the response
 ipcRenderer.on('race-data-response', (event, raceData) => {
