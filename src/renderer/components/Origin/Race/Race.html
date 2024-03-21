@@ -29,4 +29,18 @@
     <div id="race-details"></div>
     <div id="subrace-details"></div>
     <p>This is the Race Page</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const creationInProgress = localStorage.getItem('characterCreationInProgress');
+            const creationComplete = localStorage.getItem('characterCreationComplete');
+    
+            if (creationInProgress !== 'true' || creationComplete === 'true') {
+                // If character creation has not started or is complete, enable the links
+                document.querySelectorAll('.disabled').forEach(link => {
+                    link.classList.remove('disabled');
+                    link.style.pointerEvents = 'auto';
+                });
+            }
+        });
+    </script>    
 </body>

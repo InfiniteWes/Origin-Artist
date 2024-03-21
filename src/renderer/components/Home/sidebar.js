@@ -34,6 +34,8 @@ function startCharacterCreation(sidebar) {
     // Clear existing content in the sidebar
     sidebar.innerHTML = '';
 
+    localStorage.setItem('characterCreationInProgress', 'true');
+
     // Create a form for user input
     const form = document.createElement('form');
 

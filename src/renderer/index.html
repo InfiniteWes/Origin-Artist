@@ -26,5 +26,19 @@
         <a href="components/Creator/Creator.html">Creator</a>
         <a href="components/CharacterSheet/CharacterSheet.html" class="disabled">Character Sheet</a>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const creationInProgress = localStorage.getItem('characterCreationInProgress');
+            const creationComplete = localStorage.getItem('characterCreationComplete');
+    
+            if (creationInProgress !== 'true' || creationComplete === 'true') {
+                // If character creation has not started or is complete, enable the links
+                document.querySelectorAll('.disabled').forEach(link => {
+                    link.classList.remove('disabled');
+                    link.style.pointerEvents = 'auto';
+                });
+            }
+        });
+    </script>    
 </body>
 </html>

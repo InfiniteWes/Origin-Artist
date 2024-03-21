@@ -26,7 +26,10 @@ function enableNavigation() {
         link.classList.remove('disabled');
         link.style.pointerEvents = 'auto';
     });
+    // Set a flag indicating character creation is complete
+    localStorage.setItem('characterCreationComplete', 'true');
 }
+
 
 function simulateCharacterCreationComplete() {
     const event = new CustomEvent('characterCreationComplete');
