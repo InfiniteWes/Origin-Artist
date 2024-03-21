@@ -155,10 +155,18 @@ function requestAndDisplayRaceData() {
     window.electronAPI.send('request-race-data');
 }
 
+let selectedRaceData = null;
+let selectedSubraceData = null;
 let currentSubraces = [];
 
 function selectRace(raceData) {
     console.log("Race selected:", raceData.element[0]["@name"]); // For debugging
+    selectedRaceData = raceData;
+
+    if (selectedRaceData && selectedSubraceData) {
+        updateCharacterDataInLocalStorage();
+    }
+
     updateRaceSelectionDisplay(raceData.element[0]["@name"]);
     currentSubraces = raceData.element.filter(item => item["@type"] === "Sub Race" || item["@type"] === "Subrace" || item["@type"] === "Sub race" || item["@color"]);
 
@@ -246,7 +254,12 @@ function displaySubraceDetails(subraceData) {
 
 function selectSubrace(subraceData) {
     console.log(subraceData["@name"] + " selected"); // For debugging
+    selectedSubraceData = subraceData;
     updateSubraceSelectionDisplay(subraceData["@name"]);
+
+    if (selectedRaceData && selectedSubraceData) {
+        updateCharacterDataInLocalStorage();
+    }
 
     // Clear subrace details display
     const subraceDetailsDiv = document.getElementById('subrace-details');
@@ -332,6 +345,42 @@ function deselectSubrace() {
         // Standard handling for other races
         displaySubraces(currentSubraces, 'Subrace');
     }
+}
+
+// Store the character Data.
+function characterData() {
+    // Retrieve the existing character data from localStorage
+    let storedCharacterData = localStorage.getItem('characterData');
+    storedCharacterData = storedCharacterData ? JSON.parse(storedCharacterData) : {};
+
+    // Check if both race and subrace have been selected
+    if (selectedRaceData && selectedSubraceData) {
+        // Update the stored character data with the race and subrace information
+        storedCharacterData.race = selectedRaceData;
+        storedCharacterData.subrace = selectedSubraceData;
+
+        // Save the updated character data back to localStorage
+        localStorage.setItem('characterData', JSON.stringify(storedCharacterData));
+
+        console.log('Updated character data with race and subrace:', storedCharacterData);
+    } else {
+        console.log("Please ensure both a race and subrace have been selected.");
+    }
+}
+
+function updateCharacterDataInLocalStorage() {
+    // Retrieve existing character data or initialize a new object if none exists
+    let storedCharacterData = localStorage.getItem('characterData');
+    storedCharacterData = storedCharacterData ? JSON.parse(storedCharacterData) : {};
+
+    // Update with the selected race and subrace
+    storedCharacterData.race = selectedRaceData;
+    storedCharacterData.subrace = selectedSubraceData;
+
+    // Save the updated character data back to localStorage
+    localStorage.setItem('characterData', JSON.stringify(storedCharacterData));
+
+    console.log('Character data updated with race and subrace:', storedCharacterData);
 }
 
 

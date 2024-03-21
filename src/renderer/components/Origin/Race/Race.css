@@ -1,0 +1,126 @@
+/* The navigation menu */
+body {
+    font-family: 'Arial', sans-serif; /* Use a modern font */
+    background-color: #111111;
+    padding: 20px; /* Padding around the entire page */
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: transparent;
+  }
+  
+  /* Navigation links */
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: rgb(196, 196, 196);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* The subnavigation menu */
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Subnav button */
+  .subnav .subnavbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: rgb(196, 196, 196);
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  /* Add a red background color to navigation links on hover */
+  .navbar a:hover, .subnav:hover .subnavbtn {
+    color: rgb(255, 254, 254);
+    background-color: transparent;
+  }
+  
+  /* Style the subnav content - positioned absolute */
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: rgb(0, 102, 255);
+    width: 100%;
+    z-index: 1;
+  }
+  
+  /* Style the subnav links */
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Add a grey background color on hover */
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+  
+  /* When you move the mouse over the subnav container, open the subnav content */
+  .subnav:hover .subnav-content {
+    display: block;
+  }
+
+.race-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.race-table th, .race-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light grey border under each row */
+}
+
+.race-table th {
+    background-color: #f2f2f2; /* Light grey background for headers */
+    color: #333; /* Dark grey text for headers */
+}
+
+.race-table tr:hover {
+    background-color: #f5f5f5; /* Slightly darker grey for row hover */
+}
+
+#race-selection, #subrace-selection {
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #e7f3fe; /* Light blue background */
+    color: #31708f; /* Dark blue text */
+    border: 1px solid #bce8f1; /* Blue border */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+#race-selection h2, #subrace-selection h2 {
+    margin: 0; /* Remove default margins */
+    font-size: 1.25em; /* Slightly larger text */
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    margin: 5px 0; /* Margin around the button */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor changes to pointer when hovering over the button */
+    border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green when hovering */
+}
+
+#race-details, #subrace-details {
+    margin-top: 20px;
+}
