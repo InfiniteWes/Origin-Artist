@@ -14,6 +14,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
         if (validChannels.includes(channel)) {
             // Use once or on depending on your needs
             // ipcRenderer.once(channel, (event, ...args) => func(...args));
+            ipcRenderer.removeAllListeners(channel);
             ipcRenderer.on(channel, (event, ...args) => func(...args));
         }
     }

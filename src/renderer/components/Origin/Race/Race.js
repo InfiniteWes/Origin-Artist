@@ -2,21 +2,16 @@
 
 // Assuming you have loaded the Race.json file into a variable named raceData
 // For demonstration purposes, let's assume raceData is an array of objects with race information
-
-
-const TestButton = document.createElement('button');
-TestButton.textContent = 'Test';
-TestButton.addEventListener('click', () => {
-    console.log('Test button clicked');
-    window.electronAPI.receiveData('race-data-response', (data) => {
-        console.log(data); // Handle the received data
-        console.log("The data was received!");
-    });
-    window.electronAPI.send('request-race-data', 'Dragonborn');
-    console.log("All data receieved!");
-    
+// In your renderer process JavaScript, responsible for handling race page logic
+electronAPI.receiveData('race-data-response', (raceData) => {
+    if (raceData) {
+        const tbody = document.querySelector('.race-table tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+        populateRaceTable(tbody, raceData); // Repopulate the table with the received data
+    } else {
+        console.log("No race data received");
+    }
 });
-document.body.appendChild(TestButton);
 
 // This function will create the table structure and append it to the body
 function setupRaceTable() {
@@ -157,11 +152,21 @@ function requestAndDisplayRaceData() {
         populateRaceTable(tbody, data);
     });
 
-    window.electronAPI.send('request-race-data', 'Dragonborn');
+    window.electronAPI.send('request-race-data');
 }
+
+let currentSubraces = [];
 
 function selectRace(raceData) {
     console.log("Race selected:", raceData.element[0]["@name"]); // For debugging
+    updateRaceSelectionDisplay(raceData.element[0]["@name"]);
+    currentSubraces = raceData.element.filter(item => item["@type"] === "Sub Race" || item["@type"] === "Subrace" || item["@type"] === "Sub race" || item["@color"]);
+
+    // Clear subrace selection when a new race is selected
+    const subraceSelectionDiv = document.getElementById('subrace-selection');
+    if (subraceSelectionDiv) {
+        subraceSelectionDiv.innerHTML = '';
+    }
 
     const detailsDiv = document.getElementById('race-details');
     detailsDiv.innerHTML = ''; // Clear previous content
@@ -239,10 +244,98 @@ function displaySubraceDetails(subraceData) {
     // Additional details can be appended here as needed
 }
 
-
-
 function selectSubrace(subraceData) {
     console.log(subraceData["@name"] + " selected"); // For debugging
+    updateSubraceSelectionDisplay(subraceData["@name"]);
+
+    // Clear subrace details display
+    const subraceDetailsDiv = document.getElementById('subrace-details');
+    if (subraceDetailsDiv) {
+        subraceDetailsDiv.innerHTML = '';
+    }
+
+    const tbody = document.querySelector('.race-table tbody');
+    tbody.innerHTML = ''; // Clear existing table rows
 }
 
-requestAndDisplayRaceData();
+let currentRace; // Creates empty variable to store the current race
+
+// Function to update the Race selection if the user deselects a race.
+function updateRaceSelectionDisplay(raceName) {
+    currentRace = raceName; // Update the current race
+
+    const raceSelectionDiv = document.getElementById('race-selection');
+    raceSelectionDiv.innerHTML = ''; // Clear previous content
+
+    const selectionText = document.createTextNode(`Race: ${raceName}`);
+    raceSelectionDiv.appendChild(selectionText);
+
+    const deselectButton = document.createElement('button');
+    deselectButton.textContent = 'Deselect';
+    deselectButton.addEventListener('click', deselectRace);
+    raceSelectionDiv.appendChild(deselectButton);
+}
+
+// Function to update the Subrace selection if the user deselects a race.
+function updateSubraceSelectionDisplay(subraceName) {
+    const subraceSelectionDiv = document.getElementById('subrace-selection');
+    subraceSelectionDiv.innerHTML = ''; // Clear previous content
+
+    const selectionText = document.createTextNode(`Subrace: ${subraceName}`);
+    subraceSelectionDiv.appendChild(selectionText);
+
+    const deselectButton = document.createElement('button');
+    deselectButton.textContent = 'Deselect';
+    deselectButton.addEventListener('click', deselectSubrace);
+    subraceSelectionDiv.appendChild(deselectButton);
+}
+
+// Function to deselect the race
+function deselectRace() {
+    const raceSelectionDiv = document.getElementById('race-selection');
+    const subraceSelectionDiv = document.getElementById('subrace-selection');
+    if (raceSelectionDiv) {
+        raceSelectionDiv.innerHTML = ''; // Clear the race selection display
+    }
+    if (subraceSelectionDiv) {
+        subraceSelectionDiv.innerHTML = ''; // Clear the subrace selection display
+    }
+
+    currentSubraces = []; // Reset the current subraces
+    currentRace = null; // Reset the current race
+
+    const tbody = document.querySelector('.race-table tbody');
+    tbody.innerHTML = ''; // Important: Clear the table before repopulating
+
+    electronAPI.send('request-race-data'); // Repopulate the race table
+}
+
+
+// Function to deselect the subrace
+function deselectSubrace() {
+    // Clear the subrace selection display
+    const subraceSelectionDiv = document.getElementById('subrace-selection');
+    if (subraceSelectionDiv) {
+        subraceSelectionDiv.innerHTML = '';
+    }
+
+    const tbody = document.querySelector('.race-table tbody');
+    tbody.innerHTML = ''; // Clear existing table rows
+
+    // Repopulate the subrace list for the current race
+    // This allows users to select a different subrace without changing the race
+    if (currentRace === "Dragonborn") {
+        // Special handling for Dragonborn to display Draconic Ancestry options
+        const dragonbornSubraces = currentSubraces.filter(item => item["@color"]);
+        displaySubraces(dragonbornSubraces, 'Dragonborn Ancestry');
+    } else {
+        // Standard handling for other races
+        displaySubraces(currentSubraces, 'Subrace');
+    }
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    requestAndDisplayRaceData();
+});
