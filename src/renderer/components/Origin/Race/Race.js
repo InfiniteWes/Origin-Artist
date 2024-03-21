@@ -163,6 +163,9 @@ function requestAndDisplayRaceData() {
 function selectRace(raceData) {
     console.log("Race selected:", raceData.element[0]["@name"]); // For debugging
 
+    const detailsDiv = document.getElementById('race-details');
+    detailsDiv.innerHTML = ''; // Clear previous content
+
     // Check if it's Dragonborn and has racial traits to be treated as subraces
     if (raceData.element[0]["@name"] === "Dragonborn") {
         const dragonbornSubraces = raceData.element.filter(item => item["@color"]);
@@ -187,6 +190,10 @@ function displaySubraces(subraces, type) {
         nameCell.textContent = subrace["@name"] + (type === 'Dragonborn Ancestry' ? ' Ancestry' : ''); // Add 'Ancestry' suffix for Dragonborn
         row.appendChild(nameCell);
 
+        row.addEventListener('click', () => {
+            displaySubraceDetails(subrace); // Handle subrace selection
+        });
+
         row.addEventListener('dblclick', () => {
             selectSubrace(subrace); // Handle subrace selection on double click
         });
@@ -194,6 +201,45 @@ function displaySubraces(subraces, type) {
         tbody.appendChild(row);
     });
 }
+
+function displaySubraceDetails(subraceData) {
+    const subraceDetailsDiv = document.getElementById('subrace-details');
+    subraceDetailsDiv.innerHTML = ''; // Clear previous content
+
+    // Display subrace name
+    const nameHeader = document.createElement('h2');
+    nameHeader.textContent = subraceData["@name"];
+    subraceDetailsDiv.appendChild(nameHeader);
+
+    // Iterate through the description array
+    subraceData.description.forEach(element => {
+        const paragraph = document.createElement('p');
+
+        if (typeof element === 'string') {
+            // Directly append string elements as paragraph text
+            paragraph.textContent = element;
+        } else {
+            // For object elements, check for 'strong' and 'em' properties
+            if (element.strong && element.strong.em) {
+                const strongElement = document.createElement('strong');
+                const emElement = document.createElement('em');
+                emElement.textContent = element.strong.em;
+                strongElement.appendChild(emElement);
+                paragraph.appendChild(strongElement);
+            }
+            // Append the text content after any 'strong'/'em' formatting
+            if (element.text) {
+                paragraph.append(` ${element.text}`);
+            }
+        }
+
+        subraceDetailsDiv.appendChild(paragraph);
+    });
+
+    // Additional details can be appended here as needed
+}
+
+
 
 function selectSubrace(subraceData) {
     console.log(subraceData["@name"] + " selected"); // For debugging
