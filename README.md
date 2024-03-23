@@ -34,6 +34,7 @@ Third Step:
 
 ```
 npm install electron
+npm install firebase
 ```
 
 Final Step:
