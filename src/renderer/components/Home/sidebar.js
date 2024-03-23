@@ -7,7 +7,6 @@ export function createSidebar(onCharacterCreationComplete) {
     sidebar.style.right = '0'; // Open the sidebar by default
     sidebar.style.width = '250px';
     sidebar.style.height = 'calc(100% - 60px)'; // Adjust height to fit below navigation bar
-    sidebar.style.backgroundColor = '#f4f4f4';
     sidebar.style.padding = '20px';
     sidebar.style.boxShadow = '-1px 0 4px rgba(0, 0, 0, 0.1)';
     sidebar.style.transition = 'right 0.5s'; // Add transition for animation
@@ -58,6 +57,26 @@ function startCharacterCreation(sidebar) {
 
     form.appendChild(levelLabel);
 
+    // Feats Checkbox
+    const FeatLabel = document.createElement('label');
+    FeatLabel.textContent = 'Feat: ';
+    const FeatInput = document.createElement('input');
+    FeatInput.type = 'checkbox';
+    FeatInput.checked = true;
+    FeatLabel.appendChild(FeatInput);
+
+    form.appendChild(FeatLabel);
+
+    // MultiClass Checkbox
+    const MultiClassLabel = document.createElement('label');
+    MultiClassLabel.textContent = 'Multi-Class: ';
+    const MultiClassInput = document.createElement('input');
+    MultiClassInput.type = 'checkbox';
+    MultiClassInput.checked = true;
+    MultiClassLabel.appendChild(MultiClassInput);
+
+    form.appendChild(MultiClassLabel);
+
     const closeButton = document.createElement('button');
     closeButton.textContent = 'Close Sidebar';
     closeButton.addEventListener('click', () => {
@@ -71,7 +90,9 @@ function startCharacterCreation(sidebar) {
         event.preventDefault();
         const characterData = {
             name: nameInput.value,
-            level: levelInput.value
+            level: levelInput.value,
+            Feat: FeatInput.checked,
+            MultiClass: MultiClassInput.checked
         };
 
         if (typeof onCharacterCreationComplete === 'function') {

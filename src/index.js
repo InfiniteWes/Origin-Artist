@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 const path = require('path');
 const { initializeApp } = require('firebase/app');
 const { getDatabase, ref, get } = require('firebase/database');
@@ -18,7 +18,6 @@ const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
 
 // Splash Screen / loading Screeen
-
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -46,7 +45,16 @@ const createWindow = () => {
     }
   });
 
-  ipcMain.on('request-race-data', async (event, raceName) => {
+  ipcMain.handle('dark-mode:toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  });
+
+  ipcMain.on('request-race-data', async (event) => {
     // Assuming raceName is a variable containing the name of the race you want data for
 
     // Get the base races from the database
@@ -63,14 +71,27 @@ const createWindow = () => {
       console.error(error);
       event.reply('race-data-response', null);
     });
+  });
 
-    // Get the expansion races from the database
-    //const race_expansion_DataRef = ref(db, `/expansion/races/`);
-    
+  ipcMain.on('request-class-data', async (event) => {
+    // Assuming raceName is a variable containing the name of the race you want data for
+
+    // Get the base races from the database
+    const class_main_DataRef = ref(db, `/main/classes/`);
+    get(class_main_DataRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const classData = snapshot.val();
+        event.reply('class-data-response', classData); // Send data back to renderer
+      } else {
+        console.log("No data available");
+        event.reply('class-data-response', null);
+      }
+    }).catch((error) => {
+      console.error(error);
+      event.reply('class-data-response', null);
+    });
   });
   
-
-
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
   mainWindow.center();
@@ -118,7 +139,6 @@ const db = getDatabase(firebaseapp);
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  Menu.setApplicationMenu(menu);
   createWindow();
 });
 

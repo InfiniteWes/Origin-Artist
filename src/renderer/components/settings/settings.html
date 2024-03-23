@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origin-Artist</title>
-    <link rel="stylesheet" href="./Creator.css">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" type="text/css" href="../settings/settings.css">
 </head>
 <body>
     <div class = "navbar">
@@ -20,14 +20,18 @@
                 <a href="components/Origin/Equipment/Equipment.html" class="disabled">Equipment</a>
             </div>
         </div>
-        <a href="./Creator.html">Creator</a>
-        <a href="../CharacterSheet/CharacterSheet.html" class="disabled">Character Sheet</a>
-        <a href="../settings/settings.html">Settings</a>
+        <a href="components/Creator/Creator.html">Creator</a>
+        <a href="components/CharacterSheet/CharacterSheet.html" class="disabled">Character Sheet</a>
+        <a href="components/settings/settings.html">Settings</a>
     </div>
+    <button id="toggle-dark-mode">Toggle Dark Mode</button>
+    <script src="../../renderer.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const creationInProgress = localStorage.getItem('characterCreationInProgress');
+    
             if (creationInProgress === 'true') {
+                // If character creation has started, enable the links
                 document.querySelectorAll('.disabled').forEach(link => {
                     link.classList.remove('disabled');
                     link.style.pointerEvents = 'auto';
@@ -35,5 +39,6 @@
             }
         });
     </script>
+  </body>
 </body>
 </html>

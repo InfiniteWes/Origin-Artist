@@ -1,11 +1,10 @@
-html {
-  background-color: #111111;
+@media (prefers-color-scheme: dark) {
+  body { background: #333; color: white; }
 }
 
-body {
-  margin: 0;
-  background-color: #111111;
-}
+@media (prefers-color-scheme: light) {
+  body { background: #ddd; color: black; }
+  }
 
 /* Hide the menu bar */
 body > .titlebar {
@@ -27,7 +26,6 @@ body > .titlebar {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 /* The subnavigation menu */
 .subnav {
   float: left;
@@ -75,7 +73,6 @@ body > .titlebar {
   color: black;
 }
 
-/* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
   display: block;
 }
