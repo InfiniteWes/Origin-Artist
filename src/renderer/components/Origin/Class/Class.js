@@ -7,7 +7,12 @@ function levelCheck() {
     // Check if character data and level exist
     if (characterData && characterData.level) {
         const level = characterData.level;
+        console.log("Character level is: " + level);
     }
+}
+
+function multiClassCheck() {
+    // Function to check if multi-class is on, if on, then allow user to add another class after level 2 and if there proficiencies are matching.
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,6 +70,31 @@ function displayClasses(classData) {
         card.addEventListener('click', () => {
             displayClassInfo(classObj.element[0]);
         });
+
+        card.addEventListener('dblclick', () => {
+            const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+            
+            // Assuming the race has already been chosen and stored under 'race' key
+            if (characterData.race) {
+                const className = classObj.element[0]["@name"];
+                
+                // Update characterData with selected class and save back to localStorage
+                characterData.class = className;
+                localStorage.setItem('characterData', JSON.stringify(characterData));
+        
+                // Optionally, you can then proceed to display level-based options if the level is already set
+                if (characterData.level) {
+                    displayClassOptions(classObj, characterData.level);
+                } else {
+                    // Notify user to select level if not set
+                    console.log("Please select your character level.");
+                }
+            } else {
+                // Notify user to select race first
+                console.log("Please select your character race first.");
+            }
+        });
+        
     });
 }
 
@@ -160,3 +190,103 @@ function displayClassInfo(classObj) {
 
     // Continue to display other elements as needed (h3, h4, h5, etc.)
 }
+
+function displayClassOptions(classObj, userLevel) {
+    const optionsContainer = document.getElementById('optionsContainer');
+    if (!optionsContainer) return;
+    optionsContainer.innerHTML = '';
+
+    // Function to handle deselecting an option and repopulating choices
+    function handleDeselect(container, populateFunction) {
+        container.innerHTML = ''; // Clear the container
+        populateFunction(); // Repopulate options
+    }
+
+    // Function to handle selection and add deselect button
+    function handleSelection(container, selectionText, repopulateFunction) {
+        container.innerHTML = ''; // Clear previous content
+
+        const selection = document.createElement('li');
+        selection.textContent = selectionText;
+        container.appendChild(selection);
+
+        const deselectBtn = document.createElement('button');
+        deselectBtn.textContent = 'Deselect';
+        deselectBtn.onclick = () => handleDeselect(container, repopulateFunction);
+        container.appendChild(deselectBtn);
+    }
+
+    // Populate Ability Score Improvements
+    const asiContainer = document.createElement('div');
+    asiContainer.id = 'asiContainer';
+    asiContainer.innerHTML = '<h3>Ability Score Improvements</h3>';
+    optionsContainer.appendChild(asiContainer);
+
+    classObj.element.forEach(feature => {
+        if (feature['@type'] === "Class Feature" && feature['@name'] === "Ability Score Improvement") {
+            feature.rules.forEach(rule => {
+                const level = parseInt(rule['@level'], 10);
+                if (userLevel >= level) {
+                    const levelContainer = document.createElement('div');
+                    asiContainer.appendChild(levelContainer);
+    
+                    const populateASIOptions = () => {
+                        levelContainer.innerHTML = `<h4>Level ${level} Options:</h4>`;
+                        const optionsList = document.createElement('ul');
+                        ['Ability Score Improvement', 'Feat'].forEach(optionText => {
+                            const option = document.createElement('li');
+                            option.textContent = optionText;
+                            option.addEventListener('dblclick', () => {
+                                handleSelection(levelContainer, `Level ${level}: ${optionText}`, populateASIOptions);
+    
+                                const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+                                // Initialize the 'asiChoices' key as an object if it doesn't exist
+                                characterData.asiChoices = characterData.asiChoices || {};
+    
+                                // Store the user's selection for the specific level
+                                if (optionText === 'Ability Score Improvement') {
+                                    characterData.asiChoices[`Level ${level}`] = 'Ability Score Improvement';
+                                } else if (optionText === 'Feat') {
+                                    characterData.asiChoices[`Level ${level}`] = 'Feat';
+                                }
+    
+                                localStorage.setItem('characterData', JSON.stringify(characterData));
+                            });
+                            optionsList.appendChild(option);
+                        });
+                        levelContainer.appendChild(optionsList);
+                    };
+                    populateASIOptions(); // Initial population of ASI options
+                }
+            });
+        }
+    });    
+
+    // Populate Archetypes
+    const archetypesContainer = document.createElement('div');
+    archetypesContainer.innerHTML = '<h3>Archetypes</h3>';
+    optionsContainer.appendChild(archetypesContainer);
+
+    const archetypesList = document.createElement('ul');
+    archetypesContainer.appendChild(archetypesList);
+
+    const populateArchetypes = () => {
+        archetypesList.innerHTML = ''; // Clear previous content
+        classObj.element.forEach(feature => {
+            if (feature['@type'] === "Archetype" && (feature['@level'] ? userLevel >= parseInt(feature['@level'], 10) : true)) {
+                const archetypeOption = document.createElement('li');
+                archetypeOption.textContent = feature['@name'];
+                archetypeOption.addEventListener('dblclick', () => {
+                    handleSelection(archetypesList, `Archetype: ${feature['@name']}`, populateArchetypes);
+                    const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+                    characterData.subclass = feature;
+                    localStorage.setItem('characterData', JSON.stringify(characterData));
+                });
+                archetypesList.appendChild(archetypeOption);
+            }
+        });
+    };
+    populateArchetypes(); // Initial population of archetypes
+}
+
+
