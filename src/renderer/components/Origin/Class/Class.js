@@ -76,10 +76,9 @@ function displayClasses(classData) {
             
             // Assuming the race has already been chosen and stored under 'race' key
             if (characterData.race) {
-                const className = classObj.element[0]["@name"];
                 
                 // Update characterData with selected class and save back to localStorage
-                characterData.class = className;
+                characterData.class = classObj;
                 localStorage.setItem('characterData', JSON.stringify(characterData));
         
                 // Optionally, you can then proceed to display level-based options if the level is already set
@@ -287,6 +286,175 @@ function displayClassOptions(classObj, userLevel) {
         });
     };
     populateArchetypes(); // Initial population of archetypes
-}
 
+    // Populate Fighting Styles
+    const fightingStylesContainer = document.createElement('div');
+    fightingStylesContainer.innerHTML = '<h3>Fighting Styles</h3>';
+    optionsContainer.appendChild(fightingStylesContainer);
+
+    const fightingStylesList = document.createElement('ul'); // Ensure this is defined before populateFightingStyles is called
+    fightingStylesContainer.appendChild(fightingStylesList);
+
+    // Populate Fighting Styles
+    const populateFightingStyles = () => {
+        fightingStylesList.innerHTML = ''; // Clear previous content
+        classObj.element.forEach(feature => {
+            if (feature['@type'] === "Class Feature" && feature['@name'] === "Fighting Style") {
+                // Iterate over each fighting style and create a list item
+                feature['description']['h5'].forEach(style => {
+                    const fightingStyleOption = document.createElement('li');
+                    fightingStyleOption.textContent = style;
+                    fightingStyleOption.addEventListener('dblclick', () => {
+                        // When a fighting style is selected, handle the selection
+                        handleSelection(fightingStylesList, `Fighting Style: ${style}`, populateFightingStyles);
+                        const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+                    
+                        // Instead of storing the entire feature, store the selected style
+                        characterData.fightingStyle = { 
+                            '@id': feature['@id'],
+                            '@name': style,
+                            '@source': feature['@source'],
+                            '@type': feature['@type'],
+                            'description': feature['description']['p'][feature['description']['h5'].indexOf(style) + 1] // Description based on index
+                        };
+
+                        localStorage.setItem('characterData', JSON.stringify(characterData));
+                    });
+                    fightingStylesList.appendChild(fightingStyleOption);
+                });
+            }
+        });
+    };
+    populateFightingStyles(); // Initial population of fighting styles
+
+    const favoredEnemyContainer = document.createElement('div');
+    favoredEnemyContainer.innerHTML = '<h3>Favored Enemy</h3>';
+    optionsContainer.appendChild(favoredEnemyContainer);
+
+    const favoredEnemyList = document.createElement('ul');
+    favoredEnemyContainer.appendChild(favoredEnemyList);
+
+    let selectedHumanoids = [];
+    const updateCharacterData = (feature) => {
+        // This function updates the selected Favored Enemy in character data and localStorage
+        const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+        characterData.favoredEnemy = feature;
+        localStorage.setItem('characterData', JSON.stringify(characterData));
+    };
+
+    // Separate list for humanoid options
+    const humanoidOptionsList = document.createElement('ul');
+    favoredEnemyContainer.appendChild(humanoidOptionsList);
+    humanoidOptionsList.style.display = 'none'; // Initially hidden
+
+    const populateFavoredEnemy = () => {
+        favoredEnemyList.innerHTML = ''; // Clear previous content
+        humanoidOptionsList.innerHTML = ''; // Clear humanoid options
+        humanoidOptionsList.style.display = 'none'; // Hide humanoid options
+
+        // Filter for non-humanoid favored enemies
+        const favoredEnemies = classObj.element.filter(feature =>
+            feature['@type'] === "Class Feature" &&
+            feature['supports']?.includes("Favored Enemy") &&
+            !feature['supports']?.includes("Humanoid Favored Enemy") &&
+            !feature['@id']?.includes("HUMANOIDS_2") &&
+            !feature['@id']?.includes("HUMANOIDS_3")
+        );
+
+        favoredEnemies.forEach(feature => {
+            const favoredEnemyOption = document.createElement('li');
+            favoredEnemyOption.textContent = feature['@name'];
+            favoredEnemyList.appendChild(favoredEnemyOption);
+
+            favoredEnemyOption.addEventListener('dblclick', () => {
+                if (feature['@name'].includes("Humanoid")) {
+                    handleHumanoidSelection();
+                } else {
+                    updateCharacterData(feature);
+                }
+            });
+        });
+    };
+
+    const handleHumanoidSelection = () => {
+        favoredEnemyList.style.display = 'none'; // Hide main list
+        humanoidOptionsList.innerHTML = ''; // Clear humanoid list
+        humanoidOptionsList.style.display = 'block'; // Show humanoid list
+
+        const humanoidOptions = classObj.element.filter(item =>
+            item['@id']?.includes('HUMANOID') &&
+            item['@type'] === "Class Feature" &&
+            !item['@id']?.includes('HUMANOIDS')
+        );
+
+        humanoidOptions.forEach(option => {
+            addHumanoidOptionToList(option, humanoidOptionsList);
+        });
+
+        // Add a back button to allow user to go back to the main list
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Back to Favored Enemies';
+        backButton.onclick = () => {
+            favoredEnemyList.style.display = 'block'; // Show main list
+            humanoidOptionsList.style.display = 'none'; // Hide humanoid list
+        };
+        humanoidOptionsList.appendChild(backButton);
+    };
+
+    const addHumanoidOptionToList = (option, list) => {
+        const optionItem = document.createElement('li');
+        optionItem.textContent = option['@name'];
+        list.appendChild(optionItem);
+
+        optionItem.addEventListener('dblclick', () => {
+            if (selectedHumanoids.length < 2) {
+                selectHumanoid(option, optionItem);
+            }
+        });
+    };
+
+    const selectHumanoid = (option, listItem) => {
+        selectedHumanoids.push(option['@name']);
+        updateCharacterDataForHumanoids();
+
+        listItem.innerHTML = `${option['@name']} <button class="deselect-btn">Deselect</button>`;
+
+        const deselectBtn = listItem.querySelector('.deselect-btn');
+        deselectBtn.addEventListener('click', () => {
+            deselectHumanoid(option['@name'], listItem);
+        });
+
+        // After selecting two humanoids, hide other options
+        if (selectedHumanoids.length === 2) {
+            Array.from(humanoidOptionsList.children).forEach(item => {
+                if (!selectedHumanoids.includes(item.textContent) && item.tagName === 'LI') {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    };
+
+    const deselectHumanoid = (name, listItem) => {
+        selectedHumanoids = selectHumanoid.filter(humanoid => humanoid !== name);
+        updateCharacterDataForHumanoids();
+        listItem.remove();
+
+        // If less than two humanoids are selected, show all options again
+        if (selectedHumanoids.length < 2) {
+            Array.from(humanoidOptionsList.children).forEach(item => {
+                if (item.tagName === 'LI') {
+                    item.style.display = 'block';
+                }
+            });
+        }
+    };
+
+    const updateCharacterDataForHumanoids = () => {
+        const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+        characterData.favoredEnemy = selectedHumanoids;
+        localStorage.setItem('characterData', JSON.stringify(characterData));
+    };
+
+    populateFavoredEnemy();
+}
 

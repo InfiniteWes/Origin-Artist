@@ -62,3 +62,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Thank you all for the support of my Project. This was a long and time consuming project, but worth it!
 * The inspiration for the app was heavily based off another application called Aurora, so big thank you behind the developers behind there app because of the inspiration givin to me.
 * Thank you to my D&D group of friends who helped support along the way and gave me insight into certain features!
+
+For the level up feature, make it to where when the user multi-classes, they have the option to select which class hey want to level-up or de-level. 
+
+Add random roll hp generation for each level past level 1.
