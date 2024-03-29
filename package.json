@@ -18,7 +18,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "custom-electron-titlebar": "^4.2.8",
     "electron-squirrel-startup": "^1.0.0",
     "firebase": "^10.9.0",
     "react": "^18.2.0"
