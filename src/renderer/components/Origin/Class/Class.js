@@ -334,12 +334,21 @@ function displayClassOptions(classObj, userLevel) {
     const favoredEnemyList = document.createElement('ul');
     favoredEnemyContainer.appendChild(favoredEnemyList);
 
+    const favoredTerrainContainer = document.createElement('div');
+    favoredTerrainContainer.innerHTML = '<h3>Favored Terrain</h3>';
+    optionsContainer.appendChild(favoredTerrainContainer);
+
+    const favoredTerrainList = document.createElement('ul');
+    favoredTerrainContainer.appendChild(favoredTerrainList);
+
     let selectedHumanoids = [];
     const updateCharacterData = (feature) => {
         // This function updates the selected Favored Enemy in character data and localStorage
         const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
         characterData.favoredEnemy = feature;
+        characterData.favoredTerrain = feature;
         localStorage.setItem('characterData', JSON.stringify(characterData));
+        localStorage.setItem('favoredTerrain', JSON.stringify(characterData));
     };
 
     // Separate list for humanoid options
@@ -351,8 +360,8 @@ function displayClassOptions(classObj, userLevel) {
         favoredEnemyList.innerHTML = ''; // Clear previous content
         humanoidOptionsList.innerHTML = ''; // Clear humanoid options
         humanoidOptionsList.style.display = 'none'; // Hide humanoid options
-
-        // Filter for non-humanoid favored enemies
+    
+        // Filter for favored enemy features, including level-based access
         const favoredEnemies = classObj.element.filter(feature =>
             feature['@type'] === "Class Feature" &&
             feature['supports']?.includes("Favored Enemy") &&
@@ -360,21 +369,170 @@ function displayClassOptions(classObj, userLevel) {
             !feature['@id']?.includes("HUMANOIDS_2") &&
             !feature['@id']?.includes("HUMANOIDS_3")
         );
-
+    
         favoredEnemies.forEach(feature => {
             const favoredEnemyOption = document.createElement('li');
             favoredEnemyOption.textContent = feature['@name'];
             favoredEnemyList.appendChild(favoredEnemyOption);
-
+    
             favoredEnemyOption.addEventListener('dblclick', () => {
+                // Handle selection
                 if (feature['@name'].includes("Humanoid")) {
                     handleHumanoidSelection();
                 } else {
                     updateCharacterData(feature);
+                    favoredEnemyOption.innerHTML = `${feature['@name']}<button class="deselect-btn">Deselect</button>`;
+    
+                    // Remove other non-selected options
+                    Array.from(favoredEnemyList.children).forEach(item => {
+                        if (item !== favoredEnemyOption) {
+                            item.remove();
+                        }
+                    });
+    
+                    const deselectBtn = favoredEnemyOption.querySelector('.deselect-btn');
+                    deselectBtn.addEventListener('click', () => {
+                        favoredEnemyOption.remove();
+                        updateCharacterData({}); // Consider how to reset this part to allow re-selection
+                        populateFavoredEnemy();
+                    });
                 }
             });
         });
     };
+
+    const populateLevelSpecificFavoredEnemies = (levelSpecificList) => {
+        // Assuming 'favoredEnemies' is an array of favored enemy options
+        const favoredEnemies = classObj.element.filter(feature =>
+            feature['@type'] === "Class Feature" &&
+            feature['supports']?.includes("Favored Enemy") &&
+            !feature['supports']?.includes("Humanoid Favored Enemy") &&
+            !feature['@id']?.includes("HUMANOIDS_2") &&
+            !feature['@id']?.includes("HUMANOIDS_3")
+        );
+    
+        // Populate 'levelSpecificList' with options
+        favoredEnemies.forEach(feature => {
+            const optionItem = document.createElement('li');
+            optionItem.textContent = feature['@name'];
+            optionItem.addEventListener('dblclick', () => {
+                // Handle selection similar to your existing logic
+                if (feature['@name'].includes("Humanoid")) {
+                    handleHumanoidSelection();
+                } else {
+                    updateCharacterData(feature);
+
+                    levelSpecificList.innerHTML = '';
+
+                    optionItem.innerHTML = `${feature['@name']} <button class="deselect-btn">Deselect</button>`;
+                    levelSpecificList.appendChild(optionItem);
+
+                    const deselectBtn = optionItem.querySelector('.deselect-btn');
+                    deselectBtn.addEventListener('click', () => {
+                        updateCharacterData({}); // Reset this part to allow re-selection
+                        levelCheckFavor(); // You might need to call this or another function to refresh the lists
+                    });
+                }
+            });
+    
+            levelSpecificList.appendChild(optionItem);
+        });
+    };
+
+    const populateLevelSpecificFavoredTerrains = (levelSpecificList) => {
+        // Assuming 'favoredTerrains' is an array of favored terrain options
+        const favoredTerrains = classObj.element.filter(feature =>
+            feature['@type'] === "Class Feature" &&
+            feature['supports']?.includes("Favored Terrain") &&
+            feature['@id']?.includes("NATURAL_EXPLORER_")
+        );
+
+        // Populate 'levelSpecificList' with options
+        favoredTerrains.forEach(feature => {
+            const optionItem = document.createElement('li');
+            optionItem.textContent = feature['@name'];
+            optionItem.addEventListener('dblclick', () => {
+                // Handle selection similar to your existing logic
+                updateCharacterData(feature);
+                levelSpecificList.innerHTML = '';
+                optionItem.innerHTML = `${feature['@name']} <button class="deselect-btn">Deselect</button>`;
+                levelSpecificList.appendChild(optionItem);
+                const deselectBtn = optionItem.querySelector('.deselect-btn');
+                deselectBtn.addEventListener('click', () => {
+                    updateCharacterData({}); // Reset this part to allow re-selection
+                    levelCheckFavor(); // You might need to call this or another function to refresh the lists
+                });
+            })
+            levelSpecificList.appendChild(optionItem);
+        });
+    }
+
+    const levelCheckFavor = () => {
+        const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+        const userLevel = characterData.level || 0;
+    
+        // Find the favored enemy feature
+        const favoredEnemyFeature = classObj.element.find(feature => feature['@id'] === "ID_WOTC_CLASSFEATURE_RANGER_FAVORED_ENEMY");
+        const naturalExplorerFeature = classObj.element.find(feature => feature['@id'] === "ID_WOTC_CLASSFEATURE_RANGER_NATURAL_EXPLORER");
+    
+        const dynamicallyPopulateFavoredEnemies = () => {
+            if (!favoredEnemyFeature) {
+                console.error("Favored Enemy feature not found.");
+                return;
+            }
+    
+            favoredEnemyList.innerHTML = ''; // Clear the previous content
+    
+            favoredEnemyFeature.rules.forEach(rule => {
+                const ruleLevel = parseInt(rule['@level'], 10);
+    
+                // Check if the rule name is exactly "Favored Enemy" and if the user's level meets the requirement
+                if (rule['@name'] === "Favored Enemy" && userLevel >= ruleLevel) {
+                    const levelContainer = document.createElement('div');
+                    levelContainer.className = 'favored-enemy-level-container';
+                    levelContainer.innerHTML = `<h4>Favored Enemies - Level ${ruleLevel}:</h4>`;
+                    const levelSpecificList = document.createElement('ul');
+                    levelContainer.appendChild(levelSpecificList);
+                    favoredEnemyList.appendChild(levelContainer);
+    
+                    // Populate the specific list for this level
+                    // Assuming 'populateLevelSpecificFavoredEnemies' is a function that adds the options to 'levelSpecificList'
+                    populateLevelSpecificFavoredEnemies(levelSpecificList);
+                }
+            });
+        };
+    
+        // Assuming a similar setup for favored terrains...
+        const dynamicallyPopulateFavoredTerrains = () => {
+            if (!naturalExplorerFeature) {
+                console.error("Favored Terrain feature not found.");
+                return; // Early return if the feature is not found
+            }
+        
+            favoredTerrainList.innerHTML = ''; // Clear the previous content
+        
+            naturalExplorerFeature.rules.forEach(rule => {
+                const ruleLevel = parseInt(rule['@level'], 10);
+                if (userLevel >= ruleLevel && rule['@name'] === "Favored Terrain") { // Ensure rule name matches expected
+                    const levelContainer = document.createElement('div');
+                    levelContainer.className = 'favored-terrain-level-container';
+                    levelContainer.innerHTML = `<h4>Favored Terrain - Level ${ruleLevel}:</h4>`;
+                    const levelSpecificList = document.createElement('ul');
+                    levelContainer.appendChild(levelSpecificList);
+                    favoredTerrainList.appendChild(levelContainer);
+        
+                    populateLevelSpecificFavoredTerrains(levelSpecificList); // Populate the list
+                }
+            });
+        };
+        
+    
+        if (favoredEnemyFeature) dynamicallyPopulateFavoredEnemies();
+        // Similarly for favored terrains, if needed
+        if (naturalExplorerFeature) dynamicallyPopulateFavoredTerrains();
+    };
+    
+    levelCheckFavor(); // Call levelCheckFavor to perform the checks and populate options
 
     const handleHumanoidSelection = () => {
         favoredEnemyList.style.display = 'none'; // Hide main list
@@ -404,6 +562,7 @@ function displayClassOptions(classObj, userLevel) {
     const addHumanoidOptionToList = (option, list) => {
         const optionItem = document.createElement('li');
         optionItem.textContent = option['@name'];
+        optionItem.dataset.humanoidName = option['@name'];
         list.appendChild(optionItem);
 
         optionItem.addEventListener('dblclick', () => {
@@ -427,7 +586,7 @@ function displayClassOptions(classObj, userLevel) {
         // After selecting two humanoids, hide other options
         if (selectedHumanoids.length === 2) {
             Array.from(humanoidOptionsList.children).forEach(item => {
-                if (!selectedHumanoids.includes(item.textContent) && item.tagName === 'LI') {
+                if (!selectedHumanoids.includes(item.dataset.humanoidName) && item.tagName === 'LI') {
                     item.style.display = 'none';
                 }
             });
@@ -435,7 +594,7 @@ function displayClassOptions(classObj, userLevel) {
     };
 
     const deselectHumanoid = (name, listItem) => {
-        selectedHumanoids = selectHumanoid.filter(humanoid => humanoid !== name);
+        selectedHumanoids = selectedHumanoids.filter(humanoid => humanoid !== name);
         updateCharacterDataForHumanoids();
         listItem.remove();
 
@@ -455,6 +614,20 @@ function displayClassOptions(classObj, userLevel) {
         localStorage.setItem('characterData', JSON.stringify(characterData));
     };
 
-    populateFavoredEnemy();
+    //populateFavoredEnemy();
+
+    // Populate Favored Terrain List
+    const populateFavoredTerrain = () => {
+        favoredTerrainList.innerHTML = '';
+
+        classObj.element.forEach(feature => {
+            if (feature['@type'] === "Class Feature" && feature['supports'] === "Favored Terrain") {
+                const favoredTerrainOption = document.createElement('li');
+                favoredTerrainOption.textContent = feature['@name'];
+                favoredTerrainList.appendChild(favoredTerrainOption);
+            }
+        });
+    };
+    //populateFavoredTerrain();
 }
 
