@@ -107,3 +107,14 @@ body > .titlebar {
     margin-top: 8px;
     font-weight: bold;
 }
+
+.slide-away {
+  animation: slideAway 0.5s forwards;
+}
+
+@keyframes slideAway {
+  to {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+}
