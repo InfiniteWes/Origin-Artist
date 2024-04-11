@@ -37,6 +37,8 @@ function startCharacterCreation(sidebar) {
 
     // Create a form for user input
     const form = document.createElement('form');
+    
+
 
     const nameLabel = document.createElement('label');
     nameLabel.textContent = 'Character Name: ';
@@ -76,6 +78,48 @@ function startCharacterCreation(sidebar) {
     MultiClassLabel.appendChild(MultiClassInput);
 
     form.appendChild(MultiClassLabel);
+
+    const multiClassLabel = document.createElement('label');
+    multiClassLabel.textContent = 'Multi-Class: ';
+    const multiClassInput = document.createElement('input');
+    multiClassInput.type = 'checkbox';
+    multiClassInput.checked = true;
+    multiClassLabel.appendChild(multiClassInput);
+    form.appendChild(multiClassLabel);
+
+    // Image Slideshow for Character Selection
+    const imageContainer = document.createElement('div');
+    const characterImage = document.createElement('img');
+    characterImage.src = './assets/profileart1.jpg'; // Set the initial image source
+    imageContainer.appendChild(characterImage);
+
+    const prevButton = document.createElement('button');
+    prevButton.textContent = '< Previous';
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Next >';
+
+    let currentImageIndex = 0; // Initialize image index
+    const images = ['./assets/profileart2.jpg', './assets/profileart3.jpg', './assets/profileart4.jpg', './assets/profileart5.jpg', './assets/profileart6.png', './assets/profileart7.jpg']; // Image paths array
+
+    prevButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            characterImage.src = images[currentImageIndex];
+        }
+    });
+
+    nextButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentImageIndex < images.length - 1) {
+            currentImageIndex++;
+            characterImage.src = images[currentImageIndex];
+        }
+    });
+
+    form.appendChild(imageContainer);
+    form.appendChild(prevButton);
+    form.appendChild(nextButton);
 
     const closeButton = document.createElement('button');
     closeButton.textContent = 'Close Sidebar';
