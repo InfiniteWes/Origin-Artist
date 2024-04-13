@@ -33,6 +33,7 @@ const createWindow = () => {
     },
   })
 
+  // Starting the Character Process from the sidebar page.
   ipcMain.on('sidebar-to-race-page', (event) => {
     console.log("Received 'sidebar-to-race-page' IPC message"); // Log the receipt of the IPC message
     const mainWindow = BrowserWindow.getFocusedWindow();
@@ -45,6 +46,7 @@ const createWindow = () => {
     }
   });
 
+  // Handles Dark and Light mode for Users
   ipcMain.handle('dark-mode:toggle', () => {
     if (nativeTheme.shouldUseDarkColors) {
       nativeTheme.themeSource = 'light'
@@ -54,6 +56,7 @@ const createWindow = () => {
     return nativeTheme.shouldUseDarkColors
   });
 
+  // Pulls the race data from Firebase 
   ipcMain.on('request-race-data', async (event) => {
     // Assuming raceName is a variable containing the name of the race you want data for
 
@@ -73,6 +76,7 @@ const createWindow = () => {
     });
   });
 
+  // Pulls the class data from Firebase
   ipcMain.on('request-class-data', async (event) => {
     // Assuming raceName is a variable containing the name of the race you want data for
 
@@ -91,7 +95,43 @@ const createWindow = () => {
       event.reply('class-data-response', null);
     });
   });
+
+  // Pulls the background data from Firebase
+  ipcMain.on('request-background-data', async (event) => {
+    // Get the base background info from the database
+    const background_main_DataRef = ref(db, `/main/backgrounds/`);
+    get(background_main_DataRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const backgroundData = snapshot.val();
+        event.reply('background-data-response', backgroundData); // Send data back to renderer
+      } else {
+        console.log("No data available");
+        event.reply('background-data-response', null);
+      }
+    }).catch ((error) => {
+      console.error(error);
+      event.reply('background-data-response', null);
+    })
+  })
   
+  // Pulls the feats data from Firebase
+  ipcMain.on('request-feats-data', async (event) => {
+    // Get the base feats info from the database
+    const feats_main_DataRef = ref(db, `/main/feats/`);
+    get(feats_main_DataRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const featsData = snapshot.val();
+        event.reply('feats-data-response', featsData); // Send data back to renderer
+      } else {
+        console.log("No data available");
+        event.reply('feats-data-response', null);
+      }
+    }).catch ((error) => {
+      console.error(error);
+      event.reply('feats-data-response', null);
+    })
+  });
+
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
   mainWindow.center();
@@ -132,12 +172,6 @@ const firebaseConfig = {
 const firebaseapp = initializeApp(firebaseConfig);
 const db = getDatabase(firebaseapp);
 
-// Splash Screen / loading Screeen
-//const dbRef = ref(db, '/Races/Dragonborn/element');
-//module.exports = { dbRef };
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createWindow();
 });
@@ -158,6 +192,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
