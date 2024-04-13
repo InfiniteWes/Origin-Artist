@@ -11,7 +11,7 @@ function getBackground() {
         electronAPI.receiveData('background-data-response', (backgroundData) => {
             if (backgroundData) {
                 console.log(backgroundData); // For testing purposes, log the received data
-                background_option(backgroundData);
+                background_UI(backgroundData);
             } else {
                 console.log("No class data received");
             }
@@ -32,7 +32,7 @@ function getFeats() {
         electronAPI.receiveData('feats-data-response', (featsData) => {
             if (featsData) {
                 console.log(featsData); // For testing purposes, log the received data
-                background_option(featsData);
+                feats_UI(featsData);
             } else {
                 console.log("No class data received");
             }
@@ -54,24 +54,91 @@ function localCharacterData() {
     }
 }
 
-function background_option(backgroundData) {
+function background_UI(backgroundData) {
     const backgroundContainer = document.getElementById('backgroundContainer');
-    if (!backgroundContainer) return;
+    if (!backgroundContainer) {
+        console.error("Failed to find the background container element");
+        return;
+    }
+    if (!backgroundData) {
+        console.error("No background data provided to UI function");
+        return;
+    }
 
+    // Clear previous contents
     backgroundContainer.innerHTML = '';
 
+    // Create a table element
+    const table = document.createElement('table');
+
+    // Iterate over each background entry in the received data
     Object.keys(backgroundData).forEach((backgroundName) => {
-        const background = backgroundData[backgroundName];
-        const backgroundNameElement = document.createElement('p');
-        backgroundNameElement.textContent = background.name;
-        backgroundContainer.appendChild(backgroundNameElement);
-    })
+        // Create a row for each background
+        const row = document.createElement('tr');
+        
+        // Create a cell for the background name
+        const nameCell = document.createElement('td');
+        nameCell.textContent = backgroundName;  // Use the key as the name
+        row.appendChild(nameCell);
+
+        // Append the row to the table
+        table.appendChild(row);
+
+        // Add Click Event listener to each row
+        row.addEventListener('click', () => {
+            const elements = backgroundData[backgroundName].element[0];
+            const descriptionObj = elements.description;
+            if (descriptionObj && descriptionObj.p) {
+                // Convert each property in the 'p' object into a string and join them
+                const descriptionText = Object.values(descriptionObj.p).join("\n\n");
+                background_info(descriptionText);
+            } else {
+                background_info("Description not available");
+            }
+        });
+
+        // Add Double Click Event listener to each row
+        row.addEventListener('dblclick', () => {
+            const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+            characterData.background = backgroundName;
+            localStorage.setItem('characterData', JSON.stringify(characterData));
+        })
+    });
+
+    // Append the table to the background container
+    backgroundContainer.appendChild(table);
 }
 
-function skill_proficiency_option() {
+// Function to display background information
+function background_info(description) {
+    const infoContainer = document.getElementById('infoContainer');
+    if (!infoContainer) {
+        console.error("Failed to find the info container element");
+        return;
+    }
+    infoContainer.textContent = description;  // Update the text content with the background description
+}
+
+function background_choices() {
+    const infoContainer = document.getElementById('infoContainer');
+    if (!infoContainer) {
+        console.error("Failed to find the info container element");
+        return;
+    }
+    infoContainer.textContent = "Background Choices";
+}
+
+
+
+
+function feats_UI() {
 
 }
 
-function feats_option() {
+function getProficiencies() {
+
+}
+
+function skill_proficiency_UI() {
 
 }
