@@ -105,9 +105,34 @@ function background_UI(backgroundData) {
 
             background_choices(backgroundData[backgroundName].element[0]);
 
+            // Add a deselect button to the selected row
             const deselectBtn = document.createElement('button');
             deselectBtn.textContent = 'Deselect';
-            row.appendChild(deselectBtn);
+            deselectBtn.className = 'deselect-button'; // Add a class for possible CSS styling
+            event.currentTarget.appendChild(deselectBtn);
+
+            // Handle deselect button click
+            // Handle deselect button click
+            deselectBtn.onclick = () => {
+                // Restore all rows
+                Array.from(table.querySelectorAll('tr')).forEach(tr => {
+                    tr.style.display = '';
+                    tr.classList.remove('selected');
+                });
+
+                // Remove the deselect button safely
+                deselectBtn.parentNode.removeChild(deselectBtn);
+
+                // Optionally clear the selection from character data
+                const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+                if (characterData.background && characterData.background[0].name === backgroundName) {
+                    delete characterData.background;
+                    localStorage.setItem('characterData', JSON.stringify(characterData));
+                }
+
+                // Log deselection
+                console.log("Deselected option for:", backgroundName);
+            };
         })
     });
 
@@ -220,8 +245,8 @@ function selectItem(item, key, table) {
 
         // Optionally clear the selection from character data
         const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
-        if (characterData.selections && characterData.selections[key]) {
-            delete characterData.selections[key];
+        if (characterData.selections_background && characterData.selections_background[key]) {
+            delete characterData.selections_background[key];
             localStorage.setItem('characterData', JSON.stringify(characterData));
         }
 
@@ -231,10 +256,10 @@ function selectItem(item, key, table) {
 
     // Update some state or storage to reflect the selection
     const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
-    if (!characterData.selections) {
-        characterData.selections = {};
+    if (!characterData.selections_background) {
+        characterData.selections_background = {};
     }
-    characterData.selections[key] = {
+    characterData.selections_background[key] = {
         text: item.text || "No description available",
         id: item["@id"] || "No ID"
     };
@@ -246,7 +271,15 @@ function selectItem(item, key, table) {
 
 
 function feats_UI() {
-
+    const featsContainer = document.getElementById('featsContainer');
+    if (!featsContainer) {
+        console.error("Failed to find the feats container element");
+        return;
+    }
+    if (!featsData) {
+        console.error("No feats data provided to UI function");
+        return;
+    }
 }
 
 function getProficiencies() {
