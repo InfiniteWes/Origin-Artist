@@ -269,16 +269,46 @@ function selectItem(item, key, table) {
     console.log("Selected:", item.text);
 }
 
-
-function feats_UI() {
+function feats_UI(featsData) {
     const featsContainer = document.getElementById('featsContainer');
     if (!featsContainer) {
         console.error("Failed to find the feats container element");
         return;
     }
-    if (!featsData) {
-        console.error("No feats data provided to UI function");
+    if (!featsData || !featsData.element) {
+        console.error("No feats data provided to UI function or 'element' key missing");
         return;
+    }
+
+    const characterData = JSON.parse(localStorage.getItem('characterData')) || {};
+
+    // Clear previous contents
+    featsContainer.innerHTML = '';
+
+    // Create a table element
+    const table = document.createElement('table');
+
+    // Check for each level in asiChoices if it's set to 'Feat'
+    let showFeats = false; // This flag determines whether to show feats or not
+    for (const level in characterData.asiChoices) {
+        if (characterData.asiChoices[level] === "Feat") {
+            showFeats = true;
+            break; // Exit loop if any level is set to 'Feat'
+        }
+    }
+
+    if (characterData.Feat === true && showFeats) {
+        // Iterate through featsData.element assuming it's an array
+        featsData.element.forEach((feat) => {
+            const row = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            nameCell.textContent = feat['@name']; // Use the @name property for the name
+            row.appendChild(nameCell);
+            table.appendChild(row);
+        });
+
+        // Append the table to the feats container
+        featsContainer.appendChild(table);
     }
 }
 
