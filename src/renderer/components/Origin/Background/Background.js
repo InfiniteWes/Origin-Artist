@@ -232,7 +232,6 @@ function selectItem(item, key, table) {
     event.currentTarget.appendChild(deselectBtn);
 
     // Handle deselect button click
-    // Handle deselect button click
     deselectBtn.onclick = () => {
         // Restore all rows
         Array.from(table.querySelectorAll('tr')).forEach(tr => {
