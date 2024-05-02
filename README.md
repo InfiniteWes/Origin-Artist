@@ -3,6 +3,7 @@
 Origin Artist is a Dungeons and Dragon's Character Creator designed to help players, 
 whether new or experienced, in creating the right character for them! 
 Origin Artist is the first place where your characters Origins begin in your wonderful Dungeons and Dragons Campaign!
+### Note: This is still in development and the frontend design is still not finished.
 
 ## Getting Started
 
